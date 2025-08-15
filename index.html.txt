@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اختر اللغة - مكتب المحامي جورج بوحبيب</title>
+    <style>
+        body {
+            font-family: 'Tahoma', sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 100px;
+        }
+        h1 { color: #002147; }
+        a {
+            display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
+            background-color: #002147;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 18px;
+        }
+        a:hover { background-color: #004080; }
+    </style>
+</head>
+<body>
+    <h1>اختر اللغة / Choisissez la langue / Choose your language</h1>
+    <a href="ar.html">العربية</a>
+    <a href="fr.html">Français</a>
+    <a href="en.html">English</a>
+</body>
+</html>

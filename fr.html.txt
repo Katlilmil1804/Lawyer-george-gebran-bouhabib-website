@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cabinet de l'Avocat Georges Bouhabib</title>
+<style>
+    body { font-family: 'Tahoma', sans-serif; background-color:#f4f4f4; color:#333; text-align:left; margin:0; padding:0; }
+    header { background-color:#002147; color:white; padding:15px; text-align:center; }
+    section { padding:20px; background:white; margin:20px auto; max-width:800px; border-radius:10px; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+    h2 { color:#002147; }
+    ul { padding-left:20px; }
+    a { color: #0b5ed7; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .whatsapp-btn { display:inline-block; background-color:#25D366; color:white; padding:10px 20px; border-radius:5px; font-weight:bold; text-decoration:none; margin:10px 0; }
+    .map-container { margin-top:15px; border-radius:10px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,0.2); }
+    iframe { width:100%; height:300px; border:none; }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Cabinet de l'Avocat Georges Jibran Bouhabib</h1>
+</header>
+
+<section>
+    <p><strong>Avocat, conseils juridiques et représentation judiciaire</strong></p>
+
+    <h2>À propos</h2>
+    <p>
+        Bienvenue au cabinet de l'avocat Georges Abou Habib, où nous offrons des services juridiques spécialisés et fiables à Beyrouth, Liban.
+        Nous nous engageons à fournir les meilleures solutions juridiques à nos clients, particuliers et entreprises, avec un accent sur le professionnalisme et la transparence.
+    </p>
+
+    <h2>Contactez-nous</h2>
+    <p>📍 Liban, Antelias, Hay Al-Ghawarne, Rue Hôpital Sainte ou Rue Église Mar Mikhael, près des magasins Beshara Stores</p>
+    <p>📞 Téléphone: <a href="tel:+96171856207">+961 71 856 207</a></p>
+    <p>✉ Email: <a href="mailto:gabymic1804@outlook.com">gabymic1804@outlook.com</a></p>
+    <p><a class="whatsapp-btn" href="https://wa.me/96171856207" target="_blank">💬 Contacter sur WhatsApp</a></p>
+
+    <h2>Domaines juridiques</h2>
+    <ul>
+        <li>Droit pénal</li>
+        <li>Droit de la famille</li>
+        <li>Droit immobilier</li>
+        <li>Contentieux en assurance</li>
+        <li>Droit des loyers</li>
+        <li>Successions et héritages</li>
+        <li>Création de sociétés</li>
+        <li>Droit du travail</li>
+        <li>Mariage et divorce</li>
+    </ul>
+
+    <h2>Localisation sur la carte</h2>
+    <div class="map-container">
+        <iframe src="https://www.google.com/maps?q=Antrias%20Metn%20Lebanon&output=embed"></iframe>
+    </div>
+</section>
+
+<footer>
+    <p>© 2025 Cabinet de l'Avocat Georges Jibran Bouhabib – Tous droits réservés</p>
+</footer>
+
+</body>
+</html>

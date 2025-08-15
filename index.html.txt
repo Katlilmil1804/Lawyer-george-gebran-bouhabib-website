@@ -1,0 +1,269 @@
+﻿<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي جورج جبران بوحبيب | محامٍ في الاستئناف</title>
+    <style>
+        /* CSS Styling for a Professional Look */
+        :root {
+            --primary-color: #004d99; /* A professional blue */
+            --secondary-color: #f2f2f2;
+            --text-color: #333;
+            --light-text: #777;
+            --accent-color: #d1b066; /* Gold/Bronze accent */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--text-color);
+            text-align: right;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        header {
+            background: #fff;
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        header .logo-container img {
+            height: 60px; /* Adjust as needed */
+            margin-right: 15px;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .lang-switcher a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .lang-switcher a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 77, 153, 0.7), rgba(0, 77, 153, 0.7)), url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .specialization-item {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .specialization-item h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="https://bba.org.lb/wp-content/uploads/2021/04/Logo-Transparent-retina.png" alt="Beirut Bar Association Logo">
+                <h1 id="site-title"></h1>
+            </div>
+            <nav class="lang-switcher">
+                <a href="#" class="active" onclick="switchLanguage('ar', this)">العربية</a>
+                <a href="#" onclick="switchLanguage('en', this)">English</a>
+                <a href="#" onclick="switchLanguage('fr', this)">Français</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h2 id="hero-title"></h2>
+                <p id="hero-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 id="specializations-title"></h2>
+                <div class="specializations-grid" id="specializations-list">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2 id="contact-title"></h2>
+                <div class="contact-info">
+                    <p id="contact-address"></p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-email"></p>
+                    <a href="#" target="_blank" id="whatsapp-link"></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                title: 'المحامي جورج جبران بوحبيب | محامٍ في الاستئناف',
+                siteTitle: 'المحامي جورج جبران بوحبيب',
+                heroTitle: 'اكتب هنا عنوانًا جذابًا يعكس خبرتك',
+                heroSubtitle: 'اكتب هنا نبذة قصيرة عنك ومجال عملك',
+                specializationsTitle: 'تخصصاتنا القانونية',
+                specializations: ['تخصص 1', 'تخصص 2', 'تخصص 3', 'تخصص 4', 'تخصص 5', 'تخصص 6'],
+                contactTitle: 'تواصل معنا',
+                contactAddress: 'اكتب عنوان مكتبك هنا',
+                contactPhone: 'اكتب رقم هاتفك هنا',
+                contactEmail: 'اكتب بريدك الإلكتروني هنا',
+                whatsappLink: 'أرسل رسالة واتساب',
+                footerText: '© 2025 المحامي جورج جبران بوحبيب. جميع الحقوق محفوظة.',
+                direction: 'rtl'
+            },
+            en: {
+                title: 'Attorney George J. Bouhabib | Appellate Attorney',
+                siteTitle: 'Attorney George J. Bouhabib',
+                heroTitle: 'Enter an attractive title reflecting your experience here',
+                heroSubtitle: 'Enter a short bio about yourself and your practice here',
+                specializationsTitle: 'Our Legal Specializations',
+                specializations: ['Specialization 1', 'Specialization 2', 'Specialization 3', 'Specialization 4', 'Specialization 5', 'Specialization 6'],
+                contactTitle: 'Contact Us',
+                contactAddress: 'Enter your office address here',
+                contactPhone: 'Enter your phone number here',
+                contactEmail: 'Enter your email here',
+                whatsappLink: 'Send WhatsApp Message',
+                footerText: '© 2025 Attorney George J. Bouhabib. All rights reserved.',
+                direction: 'ltr'
+            },
+            fr: {
+                title: 'Avocat George J. Bouhabib | Avocat d\'appel',
+                siteTitle: 'Avocat George J. Bouhabib',
+                heroTitle: 'Entrez un titre accrocheur reflétant votre expérience ici',
+                heroSubtitle: 'Entrez une courte biographie sur vous-même et votre pratique ici',
+                specializationsTitle: 'Nos domaines de spécialisation',
+                specializations: ['Spécialisation 1', 'Spécialisation 2', 'Spécialisation 3', 'Spécialisation 4', 'Spécialisation 5', 'Spécialisation 6'],
+                contactTitle: 'Contactez-nous',
+                contactAddress: 'Entrez l\'adresse de votre bureau ici',
+                contactPhone: 'Entrez votre numéro de téléphone ici',
+                contactEmail: 'Entrez votre e-mail ici',
+                whatsappLink: 'Envoyer un message WhatsApp',
+                footerText: '© 2025 Avocat George J. Bouhabib. Tous droits réservés.',
+                direction: 'ltr'
+            }
+        };
+
+        function switchLanguage(lang, element) {
+            document.documentElement.lang = lang;
+            document.body.style.direction = translations[lang].direction;
+            document.title = translations[lang].title;
+            document.getElementById('site-title').textContent = translations[lang].siteTitle;
+            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+            document.getElementById('hero-subtitle').textContent = translations[lang].heroSubtitle;
+            document.getElementById('specializations-title').textContent = translations[lang].specializationsTitle;
+            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+            document.getElementById('contact-address').textContent = translations[lang].contactAddress;
+            document.getElementById('contact-phone').textContent = translations[lang].contactPhone;
+            document.getElementById('contact-email').textContent = translations[lang].contactEmail;
+            document.getElementById('whatsapp-link').textContent = translations[lang].whatsappLink;
+            document.getElementById('footer-text').innerHTML = translations[lang].footerText;
+
+            const specializationsList = document.getElementById('specializations-list');
+            specializationsList.innerHTML = ''; // Clear previous items
+            translations[lang].specializations.forEach(spec => {
+                const item = document.createElement('div');
+                item.className = 'specialization-item';
+                item.innerHTML = `<h3>${spec}</h3>`;
+                specializationsList.appendChild(item);
+            });
+
+            // Update active link
+            const langLinks = document.querySelectorAll('.lang-switcher a');
+            langLinks.forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Initial language setting
+        window.onload = function() {
+            switchLanguage('ar', document.querySelector('.lang-switcher a.active'));
+        };
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Avocat George Bouhabib</title>
+</head>
+<body>
+  <h1>Avocat George J. Bouhabib</h1>
+  <p>Services juridiques, consultations et représentation légale</p>
+
+  <h2>Domaines de spécialisation :</h2>
+  <ul>
+    <li>Droit pénal</li>
+    <li>Droit de la famille</li>
+    <li>Droit immobilier</li>
+    <li>Lois sur les baux</li>
+    <li>Héritage</li>
+    <li>Création d'entreprises</li>
+    <li>Droit du travail</li>
+    <li>Questions de mariage et divorce</li>
+    <li>Assurances</li>
+  </ul>
+
+  <h2>Contactez-nous :</h2>
+  <p>Beyrouth, Liban</p>
+  <p>Téléphone / WhatsApp: +961 71 856207</p>
+  <p>Email: gabymic1804@outlook.com</p>
+
+  <a href="https://wa.me/96171856207" target="_blank">Envoyer un message WhatsApp</a>
+
+  <iframe 
+    src="https://www.google.com/maps?q=Lebanon, Antelias, Harat Al-Ghawarne, near Beshara Stores, St. Michael Church / Hospital Street&output=embed"
+    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy">
+  </iframe>
+
+  <p><a href="index.html">Retour au choix de la langue</a></p>
+</body>
+</html>

@@ -1,0 +1,15 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Choose Language</title>
+</head>
+<body>
+  <h1>اختر لغتك / Choose your language / Veuillez choisir la langue:</h1>
+  <ul>
+    <li><a href="ar.html">العربية</a></li>
+    <li><a href="fr.html">Français</a></li>
+    <li><a href="en.html">English</a></li>
+  </ul>
+</body>
+</html>

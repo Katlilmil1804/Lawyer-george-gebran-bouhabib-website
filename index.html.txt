@@ -1,0 +1,465 @@
+﻿<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي جورج جبران بوحبيب | محامٍ في الاستئناف</title>
+    <style>
+        /* CSS Styling for a Professional Look */
+        :root {
+            --primary-color: #004d99; /* A professional blue */
+            --secondary-color: #f2f2f2;
+            --text-color: #333;
+            --light-text: #777;
+            --accent-color: #d1b066; /* Gold/Bronze accent */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        header {
+            background: #fff;
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .lang-switcher a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .lang-switcher a:hover {
+            color: var(--accent-color);
+        }
+        .lang-switcher a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 77, 153, 0.7), rgba(0, 77, 153, 0.7)), url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+            display: none; /* All sections are hidden by default */
+        }
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .specialization-item {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .specialization-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        .specialization-item a {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: block;
+        }
+        .specialization-item h3 {
+            margin-top: 0;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .back-link:hover {
+            color: var(--accent-color);
+        }
+        .specialization-content ul {
+            list-style: none;
+            padding: 0;
+        }
+        .specialization-content li {
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 id="site-title"></h1>
+            <nav class="lang-switcher">
+                <a href="#" class="active" onclick="switchLanguage('ar'); return false;">العربية</a>
+                <a href="#" onclick="switchLanguage('en'); return false;">English</a>
+                <a href="#" onclick="switchLanguage('fr'); return false;">Français</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero section" id="home-section">
+            <div class="container">
+                <h2 id="hero-title"></h2>
+                <p id="hero-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="section" id="specializations-section">
+            <div class="container">
+                <h2 id="specializations-title"></h2>
+                <div class="specializations-grid" id="specializations-list">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <div class="container">
+                <h2 id="contact-title"></h2>
+                <div class="contact-info">
+                    <p id="contact-address"></p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-email"></p>
+                    <a href="#" target="_blank" id="whatsapp-link"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section specialization-content" id="dynamic-content">
+            <div class="container" id="content-container"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                title: 'المحامي جورج جبران بوحبيب | محامٍ في الاستئناف',
+                siteTitle: 'المحامي جورج جبران بوحبيب',
+                heroTitle: 'عقود من الخبرة في القانون، التزام راسخ بالعدالة',
+                heroSubtitle: 'محامٍ في الاستئناف في نقابة المحامين في بيروت منذ عام 1992',
+                specializationsTitle: 'تخصصاتنا القانونية',
+                specializations: [
+                    { name: 'القانون العقاري', id: 'real-estate' },
+                    { name: 'القانون الجنائي', id: 'criminal-law' },
+                    { name: 'قانون الأسرة', id: 'family-law' },
+                    { name: 'حصر الإرث', id: 'inheritance' },
+                    { name: 'تأسيس الشركات', id: 'company-formation' },
+                    { name: 'قانون العمل', id: 'labor-law' },
+                    { name: 'قضايا الزواج والطلاق', id: 'marriage-divorce' },
+                    { name: 'قضايا التأمين', id: 'insurance' }
+                ],
+                contactTitle: 'تواصل معنا',
+                contactAddress: 'بيروت، لبنان',
+                contactPhone: 'رقم الهاتف / واتساب: <span dir="ltr">+961 71 856207</span>',
+                contactEmail: 'البريد الإلكتروني: gabymic1804@outlook.com',
+                whatsappLink: 'أرسل رسالة واتساب',
+                footerText: '© 2025 المحامي جورج جبران بوحبيب. جميع الحقوق محفوظة.',
+                direction: 'rtl',
+                content: {
+                    'real-estate': `<h2>القانون العقاري</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالقانون العقاري. تشمل خبراتنا الواسعة:</p><ul><li><a href="#" onclick="showContent('real-estate-litigation'); return false;">دعاوى عقارية</a></li><li><a href="#" onclick="showContent('rental-litigation'); return false;">دعاوى الإيجارات</a></li><li><a href="#" onclick="showContent('sales-contracts'); return false;">دعاوى عقود البيع</a></li><li><a href="#" onclick="showContent('real-estate-division'); return false;">القسمة العقارية</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'real-estate-litigation': `<h2>دعاوى عقارية</h2><p>نتولى جميع جوانب النزاعات العقارية، بما في ذلك نزاعات الملكية، والحدود، والمشاكل المتعلقة باتفاقيات الشراء. يقدم فريقنا تمثيلاً قانونيًا قوياً لحماية حقوق الملكية الخاصة بك.</p><p>تشمل خدماتنا:</p><ul><li>تمثيل العملاء في المحاكم في دعاوى العقارات.</li><li>التفاوض على التسويات.</li><li>تقديم المشورة بشأن الاستراتيجيات القانونية للنزاعات العقارية.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; العودة إلى القانون العقاري</a>`,
+                    'rental-litigation': `<h2>دعاوى الإيجارات</h2><p>نحن نساعد كل من الملاك والمستأجرين في حل النزاعات المتعلقة باتفاقيات الإيجار. ويشمل ذلك قضايا مثل عمليات الإخلاء، وعدم دفع الإيجار، والإخلال بشروط العقد.</p><p>تشمل خدماتنا:</p><ul><li>تمثيل الملاك في إجراءات الإخلاء.</li><li>مساعدة المستأجرين في دعاوى الإخلاء غير القانوني.</li><li>صياغة ومراجعة اتفاقيات الإيجار لمنع النزاعات المستقبلية.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; العودة إلى القانون العقاري</a>`,
+                    'sales-contracts': `<h2>دعاوى عقود البيع</h2><p>نقدم المساعدة القانونية للنزاعات التي تنشأ من عقود البيع العقارية. ويشمل ذلك القضايا المتعلقة بانتهاكات العقود، والتحريف، والفشل في الكشف عن العيوب.</p><p>تشمل خدماتنا:</p><ul><li>التقاضي في قضايا خرق العقود.</li><li>مراجعة عقود البيع لضمان الامتثال القانوني.</li><li>تقديم المشورة بشأن الآثار القانونية لشروط العقد.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; العودة إلى القانون العقاري</a>`,
+                    'real-estate-division': `<h2>القسمة العقارية</h2><p>القسمة العقارية هي عملية تقسيم ملكية عقار مشترك بين عدة مالكين. يمكن أن تكون هذه القسمة اتفاقية أو قضائية، وفي كلتا الحالتين، نحن نقدم الدعم القانوني الكامل لضمان حقوق كل طرف.</p><p>تشمل خدماتنا:</p><ul><li>صياغة عقود القسمة الاتفاقية.</li><li>التمثيل القانوني في دعاوى القسمة القضائية.</li><li>تسوية النزاعات المتعلقة بتقسيم العقارات.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; العودة إلى القانون العقاري</a>`,
+                    'criminal-law': `<h2>القانون الجنائي</h2><p>نقدم استشارات قانونية وتمثيلًا قضائيًا في مجموعة واسعة من القضايا الجنائية، مع التركيز على حقوق المتهمين وتطبيق القانون بإنصاف. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('criminal-defense'); return false;">الدفاع الجنائي</a></li><li><a href="#" onclick="showContent('crime-victims'); return false;">تمثيل ضحايا الجريمة</a></li><li><a href="#" onclick="showContent('preliminary-investigations'); return false;">التحقيقات الأولية</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'criminal-defense': `<h2>الدفاع الجنائي</h2><p>نحن ندافع عن حقوق الأفراد المتهمين بارتكاب جرائم. خدماتنا تغطي مختلف المراحل القانونية، بدءاً من مرحلة التحقيق وحتى المحاكمة. نحن ملتزمون بتقديم دفاع قوي لضمان حصولك على محاكمة عادلة.</p><p>تشمل خدماتنا:</p><ul><li>تمثيل المتهمين في المحاكم.</li><li>تقديم استشارات قانونية خلال التحقيق.</li><li>إعداد المذكرات والطعون القانونية.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; العودة إلى القانون الجنائي</a>`,
+                    'crime-victims': `<h2>تمثيل ضحايا الجريمة</h2><p>نقدم الدعم القانوني للضحايا لضمان حصولهم على العدالة. نحن نمثل الضحايا في المحاكم، ونعمل على حماية حقوقهم والحصول على تعويضات مناسبة عن الأضرار التي لحقت بهم.</p><p>تشمل خدماتنا:</p><ul><li>تقديم الشكاوى القانونية.</li><li>تمثيل الضحايا في المحاكم.</li><li>المطالبة بالتعويضات.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; العودة إلى القانون الجنائي</a>`,
+                    'preliminary-investigations': `<h2>التحقيقات الأولية</h2><p>نقدم المساعدة القانونية للأفراد أثناء مرحلة التحقيقات الأولية، لضمان أن جميع الإجراءات تتم وفقاً للقانون وأن حقوقك محفوظة. نقدم النصائح والإرشادات اللازمة للتعامل مع سلطات التحقيق.</p><p>تشمل خدماتنا:</p><ul><li>حضور جلسات التحقيق مع العميل.</li><li>تقديم المشورة القانونية.</li><li>مراجعة الوثائق المتعلقة بالتحقيق.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; العودة إلى القانون الجنائي</a>`,
+                    'family-law': `<h2>قانون الأسرة</h2><p>ندرك حساسية قضايا الأسرة وأهمية التعامل معها بمهنية وحساسية عالية. نقدم الدعم القانوني في جميع جوانب قانون الأسرة، بما في ذلك:</p><ul><li><a href="#" onclick="showContent('divorce'); return false;">الطلاق والنفقة</a></li><li><a href="#" onclick="showContent('custody'); return false;">قضايا الحضانة</a></li><li><a href="#" onclick="showContent('guardianship'); return false;">الوصاية القانونية</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'divorce': `<h2>الطلاق والنفقة</h2><p>نحن نقدم المشورة القانونية والتمثيل في قضايا الطلاق. نعمل على تسهيل عملية الطلاق وحل القضايا المتعلقة بالنفقة وتوزيع الأصول بشكل عادل وقانوني.</p><p>تشمل خدماتنا:</p><ul><li>إجراءات الطلاق.</li><li>التقاضي بشأن تسوية النفقة.</li><li>إعداد اتفاقيات تسوية الطلاق.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; العودة إلى قانون الأسرة</a>`,
+                    'custody': `<h2>قضايا الحضانة</h2><p>حضانة الأطفال هي من أكثر القضايا حساسية. نحن نمثل أولياء الأمور لضمان مصلحة الطفل الفضلى. نساعد في التوصل إلى اتفاقيات ودية أو نمثلهم في المحكمة لتحديد حقوق الحضانة.</p><p>تشمل خدماتنا:</p><ul><li>الوساطة في قضايا الحضانة.</li><li>التمثيل القانوني في محاكم الأسرة.</li><li>المساعدة في تعديل اتفاقيات الحضانة.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; العودة إلى قانون الأسرة</a>`,
+                    'guardianship': `<h2>الوصاية القانونية</h2><p>نقدم المساعدة في قضايا الوصاية على القصر أو الأفراد غير القادرين على رعاية أنفسهم. نساعد في تقديم الطلبات القانونية وتقديم المشورة حول مسؤوليات الوصي.</p><p>تشمل خدماتنا:</p><ul><li>إعداد وتقديم طلبات الوصاية.</li><li>تقديم المشورة حول حقوق وواجبات الوصي.</li><li>التمثيل القانوني في قضايا الوصاية.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; العودة إلى قانون الأسرة</a>`,
+                    'inheritance': `<h2>حصر الإرث</h2><p>نقدم استشارات وإجراءات قانونية لمساعدتك في قضايا حصر الإرث وتوزيع الممتلكات بشكل عادل ووفقًا للقوانين المعمول بها. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('probate'); return false;">إجراءات حصر الإرث وتصفيته</a></li><li><a href="#" onclick="showContent('heir-disputes'); return false;">نزاعات الورثة</a></li><li><a href="#" onclick="showContent('estate-planning'); return false;">تخطيط التركات</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'probate': `<h2>إجراءات حصر الإرث وتصفيته</h2><p>نحن نتولى جميع الإجراءات القانونية اللازمة لتصفية التركات. نقوم بإعداد الوثائق اللازمة، ونتعامل مع المحاكم والسلطات المختصة لضمان توزيع الميراث بسلاسة وسرعة.</p><p>تشمل خدماتنا:</p><ul><li>إعداد وثائق حصر الإرث.</li><li>إجراءات تصفية التركة.</li><li>تسجيل الأصول وتوزيعها على الورثة.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; العودة إلى حصر الإرث</a>`,
+                    'heir-disputes': `<h2>نزاعات الورثة</h2><p>نقدم حلولاً قانونية للنزاعات التي قد تنشأ بين الورثة. سواء كان الأمر يتعلق بصحة الوصية أو بطريقة توزيع الأصول، فإننا نعمل على حل النزاعات من خلال الوساطة أو التقاضي لحماية حقوق عملائنا.</p><p>تشمل خدماتنا:</p><ul><li>الوساطة بين الورثة.</li><li>التمثيل القانوني في المحكمة.</li><li>التقاضي في قضايا الاعتراض على الوصية.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; العودة إلى حصر الإرث</a>`,
+                    'estate-planning': `<h2>تخطيط التركات</h2><p>نحن نساعد الأفراد في تخطيط تركاتهم مسبقاً لضمان حماية أصولهم وتوزيعها على أحبائهم وفقاً لرغباتهم. يشمل ذلك إعداد الوصايا، وتحديد الوكلاء القانونيين، وتقديم المشورة حول الضرائب.</p><p>تشمل خدماتنا:</p><ul><li>صياغة الوصايا.</li><li>تحديد الأوصياء على الممتلكات.</li><li>تقديم المشورة بشأن التخطيط المالي للتركة.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; العودة إلى حصر الإرث</a>`,
+                    'company-formation': `<h2>تأسيس الشركات</h2><p>نقدم المساعدة في جميع الإجراءات القانونية اللازمة لتأسيس شركتك، بدءًا من اختيار النوع القانوني المناسب وحتى استكمال التسجيل وتجهيز العقود. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('legal-form'); return false;">اختيار الشكل القانوني</a></li><li><a href="#" onclick="showContent('corporate-contracts'); return false;">صياغة العقود والنظام الأساسي</a></li><li><a href="#" onclick="showContent('registration-process'); return false;">إجراءات التسجيل</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'legal-form': `<h2>اختيار الشكل القانوني</h2><p>نقدم المشورة لمساعدتك في اختيار أفضل شكل قانوني لشركتك (شركة فردية، شركة تضامن، شركة ذات مسؤولية محدودة، إلخ) بناءً على أهدافك وميزانيتك ومستوى المخاطر.</p><p>تشمل خدماتنا:</p><ul><li>تحليل الأهداف التجارية.</li><li>تقديم المشورة حول المسؤوليات القانونية لكل شكل.</li><li>مقارنة المزايا والعيوب لكل نوع من الشركات.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; العودة إلى تأسيس الشركات</a>`,
+                    'corporate-contracts': `<h2>صياغة العقود والنظام الأساسي</h2><p>نحن نساعد في صياغة جميع العقود والوثائق القانونية اللازمة لشركتك، مثل النظام الأساسي للشركة، واتفاقيات الشراكة، وعقود المساهمين. نضمن أن تكون هذه الوثائق شاملة ومتوافقة مع القوانين.</p><p>تشمل خدماتنا:</p><ul><li>صياغة النظام الأساسي للشركة.</li><li>إعداد اتفاقيات الشركاء.</li><li>مراجعة العقود لضمان الالتزام القانوني.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; العودة إلى تأسيس الشركات</a>`,
+                    'registration-process': `<h2>إجراءات التسجيل</h2><p>نحن نتولى جميع الإجراءات الإدارية والقانونية اللازمة لتسجيل شركتك لدى الجهات المختصة، مثل السجل التجاري والجهات الحكومية الأخرى. نوفر عليك الوقت والجهد في هذه العملية.</p><p>تشمل خدماتنا:</p><ul><li>تقديم الأوراق اللازمة للتسجيل.</li><li>التواصل مع الجهات الحكومية.</li><li>متابعة إجراءات التسجيل حتى اكتمالها.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; العودة إلى تأسيس الشركات</a>`,
+                    'labor-law': `<h2>قانون العمل</h2><p>نوفر استشارات قانونية متخصصة لحماية حقوق العمال وأصحاب العمل، بدءًا من صياغة العقود وحتى حل النزاعات. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('labor-contracts'); return false;">صياغة عقود العمل</a></li><li><a href="#" onclick="showContent('work-disputes'); return false;">النزاعات العمالية</a></li><li><a href="#" onclick="showContent('employee-rights'); return false;">حقوق العمال وأصحاب العمل</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'labor-contracts': `<h2>صياغة عقود العمل</h2><p>نحن نساعد في صياغة عقود عمل واضحة وشاملة تتوافق مع القوانين اللبنانية، مما يحمي حقوق الطرفين ويمنع النزاعات المستقبلية. نضمن أن تكون العقود عادلة وشفافة.</p><p>تشمل خدماتنا:</p><ul><li>إعداد عقود عمل مخصصة.</li><li>مراجعة العقود القائمة.</li><li>تقديم المشورة حول الشروط القانونية.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; العودة إلى قانون العمل</a>`,
+                    'work-disputes': `<h2>النزاعات العمالية</h2><p>نقدم المساعدة القانونية لحل النزاعات التي قد تنشأ بين العمال وأصحاب العمل، سواء كان ذلك من خلال الوساطة أو التقاضي. نحن نعمل على تحقيق حلول عادلة وسريعة.</p><p>تشمل خدماتنا:</p><ul><li>الوساطة في النزاعات العمالية.</li><li>التمثيل القانوني في المحكمة.</li><li>المساعدة في التفاوض على التسويات.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; العودة إلى قانون العمل</a>`,
+                    'employee-rights': `<h2>حقوق العمال وأصحاب العمل</h2><p>نحن نقدم المشورة القانونية حول حقوق وواجبات كل من العمال وأصحاب العمل وفقاً لقانون العمل اللبناني. نساعد في فهم القوانين المتعلقة بالأجور، والإجازات، وظروف العمل.</p><p>تشمل خدماتنا:</p><ul><li>الاستشارات حول قانون العمل.</li><li>حل قضايا الفصل التعسفي.</li><li>المساعدة في قضايا الأجور غير المدفوعة.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; العودة إلى قانون العمل</a>`,
+                    'marriage-divorce': `<h2>قضايا الزواج والطلاق</h2><p>نوفر التوجيه القانوني في قضايا الزواج والطلاق، مع التركيز على حقوق الأطراف المعنية وحل الخلافات بأفضل الطرق الممكنة. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('marriage-procedures'); return false;">إجراءات الزواج والطلاق</a></li><li><a href="#" onclick="showContent('marital-agreements'); return false;">اتفاقيات ما قبل الزواج</a></li><li><a href="#" onclick="showContent('marital-disputes'); return false;">تسوية الخلافات الزوجية</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'marriage-procedures': `<h2>إجراءات الزواج والطلاق</h2><p>نحن نقدم المساعدة القانونية في جميع إجراءات الزواج والطلاق، بما في ذلك إعداد الوثائق وتقديمها إلى المحاكم المختصة. نضمن أن تتم الإجراءات بسلاسة ووفقًا للقانون.</p><p>تشمل خدماتنا:</p><ul><li>إعداد عقود الزواج.</li><li>إجراءات الطلاق.</li><li>تمثيل الأطراف في المحاكم.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; العودة إلى قضايا الزواج والطلاق</a>`,
+                    'marital-agreements': `<h2>اتفاقيات ما قبل الزواج</h2><p>نحن نساعد في صياغة اتفاقيات ما قبل الزواج لحماية الأصول وتوضيح الحقوق والواجبات المالية لكلا الطرفين. هذه الاتفاقيات توفر الأمان والوضوح في العلاقة الزوجية.</p><p>تشمل خدماتنا:</p><ul><li>صياغة اتفاقيات ما قبل الزواج.</li><li>مراجعة العقود.</li><li>تقديم المشورة القانونية حول الاتفاقيات.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; العودة إلى قضايا الزواج والطلاق</a>`,
+                    'marital-disputes': `<h2>تسوية الخلافات الزوجية</h2><p>نحن نقدم الوساطة والمساعدة القانونية لحل الخلافات التي تنشأ بين الزوجين. نعمل على إيجاد حلول ودية دون اللجوء إلى المحكمة كلما كان ذلك ممكناً، مع حماية حقوق كل طرف.</p><p>تشمل خدماتنا:</p><ul><li>الوساطة في الخلافات الزوجية.</li><li>صياغة اتفاقيات التسوية.</li><li>تقديم المشورة القانونية.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; العودة إلى قضايا الزواج والطلاق</a>`,
+                    'insurance': `<h2>قضايا التأمين</h2><p>نحن نقدم استشارات قانونية وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالتأمين، لضمان حصول عملائنا على حقوقهم. تشمل خدماتنا:</p><ul><li><a href="#" onclick="showContent('insurance-claims'); return false;">مطالبات التأمين</a></li><li><a href="#" onclick="showContent('insurance-disputes'); return false;">النزاعات مع شركات التأمين</a></li><li><a href="#" onclick="showContent('court-representation'); return false;">التمثيل في المحاكم</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; العودة إلى التخصصات</a>`,
+                    'insurance-claims': `<h2>مطالبات التأمين</h2><p>نحن نساعد العملاء في تقديم مطالبات التأمين ومتابعتها لضمان حصولهم على التعويضات المستحقة. نقدم المشورة القانونية حول حقوقهم في حالة رفض شركة التأمين الدفع.</p><p>تشمل خدماتنا:</p><ul><li>مساعدة في إعداد المطالبات.</li><li>التفاوض مع شركات التأمين.</li><li>التمثيل القانوني في حال رفض المطالبة.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; العودة إلى قضايا التأمين</a>`,
+                    'insurance-disputes': `<h2>النزاعات مع شركات التأمين</h2><p>نحن نمثل العملاء في النزاعات مع شركات التأمين، سواء كانت بسبب رفض المطالبة، أو تأخير الدفع، أو أي انتهاك آخر للعقد. نحن نعمل على حل هذه النزاعات بسرعة وفعالية.</p><p>تشمل خدماتنا:</p><ul><li>الوساطة والتحكيم.</li><li>التقاضي في المحكمة.</li><li>تحليل العقود للتأكد من حقوق العميل.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; العودة إلى قضايا التأمين</a>`,
+                    'court-representation': `<h2>التمثيل في المحاكم</h2><p>نحن نمثل العملاء في المحاكم في قضايا التأمين المعقدة. لدينا خبرة في التعامل مع القضايا التي تتطلب خبرة قانونية متخصصة لضمان حصول العملاء على أفضل نتيجة ممكنة.</p><p>تشمل خدماتنا:</p><ul><li>إعداد الدفوع القانونية.</li><li>تمثيل العميل في جلسات المحكمة.</li><li>تقديم الطعون القانونية.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; العودة إلى قضايا التأمين</a>`
+                }
+            },
+            en: {
+                title: 'Attorney George J. Bouhabib | Appellate Attorney',
+                siteTitle: 'Attorney George J. Bouhabib',
+                heroTitle: 'Decades of Legal Experience, Unwavering Commitment to Justice',
+                heroSubtitle: 'Appellate Attorney in the Beirut Bar Association since 1992',
+                specializationsTitle: 'Our Legal Specializations',
+                specializations: [
+                    { name: 'Real Estate Law', id: 'real-estate' },
+                    { name: 'Criminal Law', id: 'criminal-law' },
+                    { name: 'Family Law', id: 'family-law' },
+                    { name: 'Inheritance', id: 'inheritance' },
+                    { name: 'Company Formation', id: 'company-formation' },
+                    { name: 'Labor Law', id: 'labor-law' },
+                    { name: 'Marriage and Divorce Cases', id: 'marriage-divorce' },
+                    { name: 'Insurance Cases', id: 'insurance' }
+                ],
+                contactTitle: 'Contact Us',
+                contactAddress: 'Beirut, Lebanon',
+                contactPhone: 'Phone / WhatsApp: +961 71 856207',
+                contactEmail: 'Email: gabymic1804@outlook.com',
+                whatsappLink: 'Send WhatsApp Message',
+                footerText: '© 2025 Attorney George J. Bouhabib. All rights reserved.',
+                direction: 'ltr',
+                content: {
+                    'real-estate': `<h2>Real Estate Law</h2><p>We provide specialized legal consultations and judicial representation in all cases related to real estate law. Our extensive expertise includes:</p><ul><li><a href="#" onclick="showContent('real-estate-litigation'); return false;">Real Estate Litigation</a></li><li><a href="#" onclick="showContent('rental-litigation'); return false;">Rental Litigation</a></li><li><a href="#" onclick="showContent('sales-contracts'); return false;">Sales Contract Lawsuits</a></li><li><a href="#" onclick="showContent('real-estate-division'); return false;">Real Estate Division</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'real-estate-litigation': `<h2>Real Estate Litigation</h2><p>We handle all aspects of real estate disputes, including title disputes, boundary disputes, and issues with purchase agreements. Our team provides strong legal representation to protect your property rights.</p><p>Our services include:</p><ul><li>Representing clients in court for real estate lawsuits.</li><li>Negotiating settlements.</li><li>Advising on legal strategies for property disputes.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Back to Real Estate Law</a>`,
+                    'rental-litigation': `<h2>Rental Litigation</h2><p>We assist both landlords and tenants in resolving disputes related to rental agreements. This includes issues such as evictions, non-payment of rent, and breach of lease terms.</p><p>Our services include:</p><ul><li>Representing landlords in eviction proceedings.</li><li>Assisting tenants with wrongful eviction claims.</li><li>Drafting and reviewing rental agreements to prevent future disputes.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Back to Real Estate Law</a>`,
+                    'sales-contracts': `<h2>Sales Contract Lawsuits</h2><p>We provide legal assistance for disputes arising from real estate sales contracts. This includes issues related to contract breaches, misrepresentation, and failure to disclose defects.</p><p>Our services include:</p><ul><li>Litigating breach of contract cases.</li><li>Reviewing sales contracts to ensure legal compliance.</li><li>Advising on the legal implications of contract terms.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Back to Real Estate Law</a>`,
+                    'real-estate-division': `<h2>Real Estate Division</h2><p>Real estate division is the process of dividing joint property among several owners. This division can be consensual or judicial, and in both cases, we provide full legal support to ensure the rights of each party.</p><p>Our services include:</p><ul><li>Drafting consensual division agreements.</li><li>Legal representation in judicial division lawsuits.</li><li>Resolving disputes related to property division.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Back to Real Estate Law</a>`,
+                    'criminal-law': `<h2>Criminal Law</h2><p>We provide legal consultation and judicial representation in a wide range of criminal cases, with a focus on defendants' rights and the fair application of the law. Our services include:</p><ul><li><a href="#" onclick="showContent('criminal-defense'); return false;">Criminal Defense</a></li><li><a href="#" onclick="showContent('crime-victims'); return false;">Crime Victim Representation</a></li><li><a href="#" onclick="showContent('preliminary-investigations'); return false;">Preliminary Investigations</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'criminal-defense': `<h2>Criminal Defense</h2><p>We defend the rights of individuals accused of crimes. Our services cover various legal stages, from the investigation phase to trial. We are committed to providing a strong defense to ensure you receive a fair trial.</p><p>Our services include:</p><ul><li>Representing defendants in court.</li><li>Providing legal consultations during investigations.</li><li>Preparing legal briefs and appeals.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Back to Criminal Law</a>`,
+                    'crime-victims': `<h2>Crime Victim Representation</h2><p>We provide legal support to victims to ensure they receive justice. We represent victims in court and work to protect their rights and secure appropriate compensation for the damages they have suffered.</p><p>Our services include:</p><ul><li>Filing legal complaints.</li><li>Representing victims in court.</li><li>Claiming compensation.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Back to Criminal Law</a>`,
+                    'preliminary-investigations': `<h2>Preliminary Investigations</h2><p>We provide legal assistance to individuals during the preliminary investigation phase, ensuring that all procedures are conducted in accordance with the law and that your rights are protected. We offer the necessary advice and guidance for dealing with investigation authorities.</p><p>Our services include:</p><ul><li>Attending investigation sessions with the client.</li><li>Providing legal advice.</li><li>Reviewing investigation-related documents.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Back to Criminal Law</a>`,
+                    'family-law': `<h2>Family Law</h2><p>We understand the sensitivity of family cases and the importance of handling them with high professionalism and sensitivity. We provide legal support in all aspects of family law, including:</p><ul><li><a href="#" onclick="showContent('divorce'); return false;">Divorce and Alimony</a></li><li><a href="#" onclick="showContent('custody'); return false;">Custody Cases</a></li><li><a href="#" onclick="showContent('guardianship'); return false;">Legal Guardianship</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'divorce': `<h2>Divorce and Alimony</h2><p>We provide legal advice and representation in divorce cases. We work to facilitate the divorce process and resolve issues related to alimony and asset distribution in a fair and legal manner.</p><p>Our services include:</p><ul><li>Divorce proceedings.</li><li>Litigation regarding alimony settlements.</li><li>Drafting divorce settlement agreements.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Back to Family Law</a>`,
+                    'custody': `<h2>Custody Cases</h2><p>Child custody is one of the most sensitive issues. We represent parents to ensure the best interests of the child. We help reach amicable agreements or represent them in court to determine custody rights.</p><p>Our services include:</p><ul><li>Mediation in custody cases.</li><li>Legal representation in family courts.</li><li>Assisting with the modification of custody agreements.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Back to Family Law</a>`,
+                    'guardianship': `<h2>Legal Guardianship</h2><p>We provide assistance in cases of guardianship for minors or individuals who are unable to care for themselves. We assist in filing legal petitions and provide advice on the responsibilities of a guardian.</p><p>Our services include:</p><ul><li>Preparing and filing guardianship petitions.</li><li>Advising on the rights and duties of a guardian.</li><li>Legal representation in guardianship cases.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Back to Family Law</a>`,
+                    'inheritance': `<h2>Inheritance</h2><p>We provide legal consultations and procedures to assist you in inheritance cases and the fair distribution of assets according to applicable laws. Our services include:</p><ul><li><a href="#" onclick="showContent('probate'); return false;">Inheritance and Probate Procedures</a></li><li><a href="#" onclick="showContent('heir-disputes'); return false;">Heir Disputes</a></li><li><a href="#" onclick="showContent('estate-planning'); return false;">Estate Planning</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'probate': `<h2>Inheritance and Probate Procedures</h2><p>We handle all legal procedures required for estate probate. We prepare the necessary documents and deal with the competent courts and authorities to ensure the smooth and swift distribution of the inheritance.</p><p>Our services include:</p><ul><li>Preparing inheritance documents.</li><li>Probate procedures.</li><li>Registering assets and distributing them to heirs.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Back to Inheritance</a>`,
+                    'heir-disputes': `<h2>Heir Disputes</h2><p>We provide legal solutions for disputes that may arise among heirs. Whether it is about the validity of a will or the method of asset distribution, we work to resolve disputes through mediation or litigation to protect our clients' rights.</p><p>Our services include:</p><ul><li>Mediation among heirs.</li><li>Legal representation in court.</li><li>Litigation in cases of challenging a will.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Back to Inheritance</a>`,
+                    'estate-planning': `<h2>Estate Planning</h2><p>We assist individuals in planning their estates in advance to ensure their assets are protected and distributed to their loved ones according to their wishes. This includes drafting wills, designating legal agents, and advising on taxes.</p><p>Our services include:</p><ul><li>Drafting wills.</li><li>Designating property guardians.</li><li>Advising on financial planning for the estate.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Back to Inheritance</a>`,
+                    'company-formation': `<h2>Company Formation</h2><p>We assist with all necessary legal procedures for establishing your company, from choosing the appropriate legal form to completing registration and preparing contracts. Our services include:</p><ul><li><a href="#" onclick="showContent('legal-form'); return false;">Choosing the Legal Form</a></li><li><a href="#" onclick="showContent('corporate-contracts'); return false;">Drafting Contracts and Articles of Association</a></li><li><a href="#" onclick="showContent('registration-process'); return false;">Registration Procedures</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'legal-form': `<h2>Choosing the Legal Form</h2><p>We provide advice to help you choose the best legal form for your company (sole proprietorship, partnership, limited liability company, etc.) based on your goals, budget, and risk level.</p><p>Our services include:</p><ul><li>Analyzing business objectives.</li><li>Advising on the legal responsibilities of each form.</li><li>Comparing the advantages and disadvantages of each type of company.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Back to Company Formation</a>`,
+                    'corporate-contracts': `<h2>Drafting Contracts and Articles of Association</h2><p>We assist in drafting all necessary contracts and legal documents for your company, such as the company's articles of association, partnership agreements, and shareholder contracts. We ensure that these documents are comprehensive and compliant with laws.</p><p>Our services include:</p><ul><li>Drafting the company's articles of association.</li><li>Preparing partner agreements.</li><li>Reviewing contracts to ensure legal compliance.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Back to Company Formation</a>`,
+                    'registration-process': `<h2>Registration Procedures</h2><p>We handle all administrative and legal procedures required to register your company with the competent authorities, such as the Commercial Register and other government agencies. We save you time and effort in this process.</p><p>Our services include:</p><ul><li>Submitting the necessary documents for registration.</li><li>Communicating with government agencies.</li><li>Following up on registration procedures until completion.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Back to Company Formation</a>`,
+                    'labor-law': `<h2>Labor Law</h2><p>We provide specialized legal consultations to protect the rights of both employees and employers, from drafting contracts to resolving disputes. Our services include:</p><ul><li><a href="#" onclick="showContent('labor-contracts'); return false;">Drafting Employment Contracts</a></li><li><a href="#" onclick="showContent('work-disputes'); return false;">Labor Disputes</a></li><li><a href="#" onclick="showContent('employee-rights'); return false;">Employee and Employer Rights</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'labor-contracts': `<h2>Drafting Employment Contracts</h2><p>We assist in drafting clear and comprehensive employment contracts that comply with Lebanese laws, which protects the rights of both parties and prevents future disputes. We ensure that contracts are fair and transparent.</p><p>Our services include:</p><ul><li>Preparing customized employment contracts.</li><li>Reviewing existing contracts.</li><li>Advising on legal terms.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Back to Labor Law</a>`,
+                    'work-disputes': `<h2>Labor Disputes</h2><p>We provide legal assistance to resolve disputes that may arise between employees and employers, whether through mediation or litigation. We work to achieve fair and swift solutions.</p><p>Our services include:</p><ul><li>Mediation in labor disputes.</li><li>Legal representation in court.</li><li>Assisting with settlement negotiations.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Back to Labor Law</a>`,
+                    'employee-rights': `<h2>Employee and Employer Rights</h2><p>We provide legal advice on the rights and duties of both employees and employers according to Lebanese labor law. We help in understanding laws related to wages, leaves, and working conditions.</p><p>Our services include:</p><ul><li>Consultations on labor law.</li><li>Resolving wrongful termination cases.</li><li>Assistance with unpaid wage claims.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Back to Labor Law</a>`,
+                    'marriage-divorce': `<h2>Marriage and Divorce Cases</h2><p>We provide legal guidance in marriage and divorce cases, focusing on the rights of the involved parties and resolving disputes in the best possible way. Our services include:</p><ul><li><a href="#" onclick="showContent('marriage-procedures'); return false;">Marriage and Divorce Procedures</a></li><li><a href="#" onclick="showContent('marital-agreements'); return false;">Prenuptial Agreements</a></li><li><a href="#" onclick="showContent('marital-disputes'); return false;">Marital Dispute Resolution</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'marriage-procedures': `<h2>Marriage and Divorce Procedures</h2><p>We provide legal assistance in all marriage and divorce procedures, including preparing and submitting documents to the competent courts. We ensure that procedures are conducted smoothly and in accordance with the law.</p><p>Our services include:</p><ul><li>Drafting marriage contracts.</li><li>Divorce procedures.</li><li>Representing parties in court.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Back to Marriage and Divorce Cases</a>`,
+                    'marital-agreements': `<h2>Prenuptial Agreements</h2><p>We assist in drafting prenuptial agreements to protect assets and clarify the financial rights and duties of both parties. These agreements provide security and clarity in the marital relationship.</p><p>Our services include:</p><ul><li>Drafting prenuptial agreements.</li><li>Reviewing contracts.</li><li>Providing legal advice on agreements.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Back to Marriage and Divorce Cases</a>`,
+                    'marital-disputes': `<h2>Marital Dispute Resolution</h2><p>We provide mediation and legal assistance to resolve disputes that arise between spouses. We work to find amicable solutions without resorting to court whenever possible, while protecting the rights of each party.</p><p>Our services include:</p><ul><li>Mediation in marital disputes.</li><li>Drafting settlement agreements.</li><li>Providing legal advice.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Back to Marriage and Divorce Cases</a>`,
+                    'insurance': `<h2>Insurance Cases</h2><p>We provide legal consultations and judicial representation in all insurance-related cases, ensuring our clients receive their rightful claims. Our services include:</p><ul><li><a href="#" onclick="showContent('insurance-claims'); return false;">Insurance Claims</a></li><li><a href="#" onclick="showContent('insurance-disputes'); return false;">Disputes with Insurance Companies</a></li><li><a href="#" onclick="showContent('court-representation'); return false;">Court Representation</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Back to Specializations</a>`,
+                    'insurance-claims': `<h2>Insurance Claims</h2><p>We assist clients in filing and following up on insurance claims to ensure they receive the compensation they are entitled to. We provide legal advice on their rights in case the insurance company refuses to pay.</p><p>Our services include:</p><ul><li>Assisting in preparing claims.</li><li>Negotiating with insurance companies.</li><li>Legal representation in case of a denied claim.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Back to Insurance Cases</a>`,
+                    'insurance-disputes': `<h2>Disputes with Insurance Companies</h2><p>We represent clients in disputes with insurance companies, whether due to a denied claim, delayed payment, or any other breach of contract. We work to resolve these disputes quickly and effectively.</p><p>Our services include:</p><ul><li>Mediation and arbitration.</li><li>Litigation in court.</li><li>Analyzing contracts to verify the client's rights.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Back to Insurance Cases</a>`,
+                    'court-representation': `<h2>Court Representation</h2><p>We represent clients in court in complex insurance cases. We have experience in handling cases that require specialized legal expertise to ensure clients get the best possible outcome.</p><p>Our services include:</p><ul><li>Preparing legal defenses.</li><li>Representing the client in court hearings.</li><li>Filing legal appeals.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Back to Insurance Cases</a>`
+                }
+            },
+            fr: {
+                title: 'Avocat George J. Bouhabib | Avocat d\'appel',
+                siteTitle: 'Avocat George J. Bouhabib',
+                heroTitle: 'Des décennies d\'expérience juridique, un engagement inébranlable envers la justice',
+                heroSubtitle: 'Avocat d\'appel au Barreau de Beyrouth depuis 1992',
+                specializationsTitle: 'Nos domaines de spécialisation',
+                specializations: [
+                    { name: 'Droit immobilier', id: 'real-estate' },
+                    { name: 'Droit pénal', id: 'criminal-law' },
+                    { name: 'Droit de la famille', id: 'family-law' },
+                    { name: 'Héritage', id: 'inheritance' },
+                    { name: 'Création d\'entreprises', id: 'company-formation' },
+                    { name: 'Droit du travail', id: 'labor-law' },
+                    { name: 'Questions de mariage et divorce', id: 'marriage-divorce' },
+                    { name: 'Assurances', id: 'insurance' }
+                ],
+                contactTitle: 'Contactez-nous',
+                contactAddress: 'Beyrouth, Liban',
+                contactPhone: 'Téléphone / WhatsApp: +961 71 856207',
+                whatsappLink: 'Envoyer un message WhatsApp',
+                contactEmail: 'E-mail: gabymic1804@outlook.com',
+                footerText: '© 2025 Avocat George J. Bouhabib. Tous droits réservés.',
+                direction: 'ltr',
+                content: {
+                    'real-estate': `<h2>Droit immobilier</h2><p>Nous offrons des consultations juridiques spécialisées et une représentation judiciaire dans toutes les affaires liées au droit immobilier. Notre vaste expertise comprend :</p><ul><li><a href="#" onclick="showContent('real-estate-litigation'); return false;">Poursuites immobilières</a></li><li><a href="#" onclick="showContent('rental-litigation'); return false;">Procès de location</a></li><li><a href="#" onclick="showContent('sales-contracts'); return false;">Procès de contrats de vente</a></li><li><a href="#" onclick="showContent('real-estate-division'); return false;">Division immobilière</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'real-estate-litigation': `<h2>Poursuites immobilières</h2><p>Nous traitons tous les aspects des litiges immobiliers, y compris les litiges de titre, les litiges de limites et les problèmes liés aux accords d'achat. Notre équipe offre une solide représentation juridique pour protéger vos droits de propriété.</p><p>Nos services incluent :</p><ul><li>Représenter les clients devant les tribunaux pour les poursuites immobilières.</li><li>Négocier des règlements.</li><li>Conseiller sur les stratégies juridiques pour les litiges de propriété.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Retour au Droit immobilier</a>`,
+                    'rental-litigation': `<h2>Procès de location</h2><p>Nous aidons les propriétaires et les locataires à résoudre les litiges liés aux contrats de location. Cela comprend les problèmes tels que les expulsions, le non-paiement du loyer et la rupture des conditions du bail.</p><p>Nos services incluent :</p><ul><li>Représenter les propriétaires dans les procédures d'expulsion.</li><li>Assister les locataires dans les réclamations d'expulsion abusive.</li><li>Rédiger et réviser les contrats de location pour éviter de futurs litiges.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Retour au Droit immobilier</a>`,
+                    'sales-contracts': `<h2>Procès de contrats de vente</h2><p>Nous offrons une assistance juridique pour les litiges découlant des contrats de vente immobilière. Cela comprend les problèmes liés aux ruptures de contrat, à la fausse déclaration et au défaut de divulgation des défauts.</p><p>Nos services incluent :</p><ul><li>Plaider les affaires de rupture de contrat.</li><li>Réviser les contrats de vente pour assurer la conformité légale.</li><li>Conseiller sur les implications juridiques des termes du contrat.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Retour au Droit immobilier</a>`,
+                    'real-estate-division': `<h2>Division immobilière</h2><p>La division immobilière est le processus de division d'une propriété commune entre plusieurs propriétaires. Cette division peut être consensuelle ou judiciaire, et dans les deux cas, nous fournissons un soutien juridique complet pour garantir les droits de chaque partie.</p><p>Nos services incluent :</p><ul><li>Rédaction d'accords de division consensuels.</li><li>Représentation légale dans les poursuites de division judiciaire.</li><li>Résolution des litiges liés à la division de la propriété.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate'); return false;">&larr; Retour au Droit immobilier</a>`,
+                    'criminal-law': `<h2>Droit pénal</h2><p>Nous offrons des consultations juridiques et une représentation judiciaire dans un large éventail d'affaires pénales, en mettant l'accent sur les droits des accusés et l'application équitable de la loi. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('criminal-defense'); return false;">Défense pénale</a></li><li><a href="#" onclick="showContent('crime-victims'); return false;">Représentation des victimes de crimes</a></li><li><a href="#" onclick="showContent('preliminary-investigations'); return false;">Enquêtes préliminaires</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'criminal-defense': `<h2>Défense pénale</h2><p>Nous défendons les droits des personnes accusées d'avoir commis des crimes. Nos services couvrent les différentes étapes juridiques, de la phase d'enquête au procès. Nous nous engageons à fournir une défense solide pour vous garantir un procès équitable.</p><p>Nos services comprennent :</p><ul><li>La représentation des accusés devant les tribunaux.</li><li>Des consultations juridiques pendant les enquêtes.</li><li>La préparation des mémoires et des recours juridiques.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Retour au Droit pénal</a>`,
+                    'crime-victims': `<h2>Représentation des victimes de crimes</h2><p>Nous fournissons un soutien juridique aux victimes pour garantir qu'elles obtiennent justice. Nous représentons les victimes devant les tribunaux et travaillons à protéger leurs droits et à obtenir une compensation appropriée pour les dommages qu'elles ont subis.</p><p>Nos services comprennent :</p><ul><li>Le dépôt de plaintes légales.</li><li>La représentation des victimes devant les tribunaux.</li><li>La réclamation de compensations.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Retour au Droit pénal</a>`,
+                    'preliminary-investigations': `<h2>Enquêtes préliminaires</h2><p>Nous fournissons une assistance juridique aux personnes lors de la phase d'enquête préliminaire, en veillant à ce que toutes les procédures soient menées conformément à la loi et que vos droits soient protégés. Nous offrons les conseils et les orientations nécessaires pour traiter avec les autorités d'enquête.</p><p>Nos services comprennent :</p><ul><li>La présence aux sessions d'enquête avec le client.</li><li>Des conseils juridiques.</li><li>L'examen des documents liés à l'enquête.</li></ul><a href="#" class="back-link" onclick="showContent('criminal-law'); return false;">&larr; Retour au Droit pénal</a>`,
+                    'family-law': `<h2>Droit de la famille</h2><p>Nous comprenons la sensibilité des affaires familiales et l'importance de les traiter avec un grand professionnalisme et une grande sensibilité. Nous offrons un soutien juridique dans tous les aspects du droit de la famille, y compris :</p><ul><li><a href="#" onclick="showContent('divorce'); return false;">Divorce et pension alimentaire</a></li><li><a href="#" onclick="showContent('custody'); return false;">Affaires de garde</a></li><li><a href="#" onclick="showContent('guardianship'); return false;">Tutelle légale</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'divorce': `<h2>Divorce et pension alimentaire</h2><p>Nous fournissons des conseils juridiques et une représentation dans les affaires de divorce. Nous travaillons à faciliter le processus de divorce et à résoudre les problèmes liés à la pension alimentaire et à la répartition des biens de manière équitable et légale.</p><p>Nos services comprennent :</p><ul><li>Les procédures de divorce.</li><li>Le contentieux concernant les règlements de pension alimentaire.</li><li>La rédaction d'accords de règlement de divorce.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Retour au Droit de la famille</a>`,
+                    'custody': `<h2>Affaires de garde</h2><p>La garde des enfants est l'une des questions les plus sensibles. Nous représentons les parents pour garantir le meilleur intérêt de l'enfant. Nous aidons à parvenir à des accords à l'amiable ou les représentons devant le tribunal pour déterminer les droits de garde.</p><p>Nos services comprennent :</p><ul><li>La médiation dans les affaires de garde.</li><li>La représentation légale devant les tribunaux de la famille.</li><li>L'assistance pour la modification des accords de garde.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Retour au Droit de la famille</a>`,
+                    'guardianship': `<h2>Tutelle légale</h2><p>Nous fournissons une assistance dans les affaires de tutelle pour les mineurs ou les personnes qui ne peuvent pas s'occuper d'elles-mêmes. Nous aidons à déposer des pétitions légales et fournissons des conseils sur les responsabilités d'un tuteur.</p><p>Nos services comprennent :</p><ul><li>La préparation et le dépôt des pétitions de tutelle.</li><li>Le conseil sur les droits et devoirs d'un tuteur.</li><li>La représentation légale dans les affaires de tutelle.</li></ul><a href="#" class="back-link" onclick="showContent('family-law'); return false;">&larr; Retour au Droit de la famille</a>`,
+                    'inheritance': `<h2>Héritage</h2><p>Nous fournissons des consultations et des procédures juridiques pour vous aider dans les affaires de succession et la distribution équitable des biens conformément aux lois en vigueur. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('probate'); return false;">Procédures de succession et d'homologation</a></li><li><a href="#" onclick="showContent('heir-disputes'); return false;">Litiges entre héritiers</a></li><li><a href="#" onclick="showContent('estate-planning'); return false;">Planification successorale</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'probate': `<h2>Procédures de succession et d'homologation</h2><p>Nous traitons toutes les procédures juridiques nécessaires à la succession. Nous préparons les documents nécessaires et traitons avec les tribunaux et les autorités compétentes pour garantir une distribution de l'héritage en douceur et rapide.</p><p>Nos services comprennent :</p><ul><li>La préparation des documents de succession.</li><li>Les procédures d'homologation.</li><li>L'enregistrement des biens et leur distribution aux héritiers.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Retour à l'héritage</a>`,
+                    'heir-disputes': `<h2>Litiges entre héritiers</h2><p>Nous fournissons des solutions juridiques pour les litiges qui peuvent survenir entre héritiers. Qu'il s'agisse de la validité d'un testament ou de la méthode de distribution des biens, nous nous efforçons de résoudre les litiges par la médiation ou le contentieux pour protéger les droits de nos clients.</p><p>Nos services comprennent :</p><ul><li>La médiation entre héritiers.</li><li>La représentation légale devant le tribunal.</li><li>Le contentieux dans les affaires de contestation de testament.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Retour à l'héritage</a>`,
+                    'estate-planning': `<h2>Planification successorale</h2><p>Nous aidons les individus à planifier leurs successions à l'avance pour s'assurer que leurs biens sont protégés et distribués à leurs proches conformément à leurs souhaits. Cela inclut la rédaction de testaments, la désignation d'agents légaux et des conseils sur les impôts.</p><p>Nos services comprennent :</p><ul><li>La rédaction de testaments.</li><li>La désignation de tuteurs de biens.</li><li>Des conseils sur la planification financière de la succession.</li></ul><a href="#" class="back-link" onclick="showContent('inheritance'); return false;">&larr; Retour à l'héritage</a>`,
+                    'company-formation': `<h2>Création d'entreprises</h2><p>Nous vous aidons dans toutes les procédures juridiques nécessaires à la création de votre entreprise, du choix de la forme juridique appropriée à la finalisation de l'enregistrement et à la préparation des contrats. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('legal-form'); return false;">Choisir la forme juridique</a></li><li><a href="#" onclick="showContent('corporate-contracts'); return false;">Rédiger les contrats et les statuts</a></li><li><a href="#" onclick="showContent('registration-process'); return false;">Procédures d'enregistrement</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'legal-form': `<h2>Choisir la forme juridique</h2><p>Nous fournissons des conseils pour vous aider à choisir la meilleure forme juridique pour votre entreprise (entreprise individuelle, partenariat, société à responsabilité limitée, etc.) en fonction de vos objectifs, de votre budget et de votre niveau de risque.</p><p>Nos services comprennent :</p><ul><li>L'analyse des objectifs commerciaux.</li><li>Des conseils sur les responsabilités juridiques de chaque forme.</li><li>La comparaison des avantages et des inconvénients de chaque type d'entreprise.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Retour à la Création d'entreprises</a>`,
+                    'corporate-contracts': `<h2>Rédiger les contrats et les statuts</h2><p>Nous aidons à rédiger tous les contrats et documents juridiques nécessaires à votre entreprise, tels que les statuts de l'entreprise, les accords de partenariat et les contrats d'actionnaires. Nous veillons à ce que ces documents soient complets et conformes aux lois.</p><p>Nos services comprennent :</p><ul><li>La rédaction des statuts de l'entreprise.</li><li>La préparation des accords de partenariat.</li><li>L'examen des contrats pour assurer la conformité légale.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Retour à la Création d'entreprises</a>`,
+                    'registration-process': `<h2>Procédures d'enregistrement</h2><p>Nous gérons toutes les procédures administratives et juridiques nécessaires pour enregistrer votre entreprise auprès des autorités compétentes, telles que le registre du commerce et d'autres agences gouvernementales. Nous vous faisons gagner du temps et des efforts dans ce processus.</p><p>Nos services comprennent :</p><ul><li>La soumission des documents nécessaires à l'enregistrement.</li><li>La communication avec les agences gouvernementales.</li><li>Le suivi des procédures d'enregistrement jusqu'à leur achèvement.</li></ul><a href="#" class="back-link" onclick="showContent('company-formation'); return false;">&larr; Retour à la Création d'entreprises</a>`,
+                    'labor-law': `<h2>Droit du travail</h2><p>Nous offrons des consultations juridiques spécialisées pour protéger les droits des employés et des employeurs, de la rédaction des contrats à la résolution des litiges. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('labor-contracts'); return false;">Rédaction de contrats de travail</a></li><li><a href="#" onclick="showContent('work-disputes'); return false;">Litiges du travail</a></li><li><a href="#" onclick="showContent('employee-rights'); return false;">Droits des employés et des employeurs</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'labor-contracts': `<h2>Rédaction de contrats de travail</h2><p>Nous aidons à rédiger des contrats de travail clairs et complets qui sont conformes aux lois libanaises, ce qui protège les droits des deux parties et prévient les futurs litiges. Nous veillons à ce que les contrats soient équitables et transparents.</p><p>Nos services comprennent :</p><ul><li>La préparation de contrats de travail personnalisés.</li><li>L'examen des contrats existants.</li><li>Des conseils sur les clauses légales.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Retour au Droit du travail</a>`,
+                    'work-disputes': `<h2>Litiges du travail</h2><p>Nous fournissons une assistance juridique pour résoudre les litiges qui peuvent survenir entre les employés et les employeurs, que ce soit par la médiation ou le contentieux. Nous nous efforçons de trouver des solutions justes et rapides.</p><p>Nos services comprennent :</p><ul><li>La médiation dans les litiges du travail.</li><li>La représentation légale devant le tribunal.</li><li>L'assistance pour les négociations de règlement.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Retour au Droit du travail</a>`,
+                    'employee-rights': `<h2>Droits des employés et des employeurs</h2><p>Nous fournissons des conseils juridiques sur les droits et les devoirs des employés et des employeurs conformément au droit du travail libanais. Nous aidons à comprendre les lois relatives aux salaires, aux congés et aux conditions de travail.</p><p>Nos services comprennent :</p><ul><li>Des consultations sur le droit du travail.</li><li>La résolution des affaires de licenciement abusif.</li><li>L'assistance dans les affaires de salaires impayés.</li></ul><a href="#" class="back-link" onclick="showContent('labor-law'); return false;">&larr; Retour au Droit du travail</a>`,
+                    'marriage-divorce': `<h2>Questions de mariage et divorce</h2><p>Nous fournissons des conseils juridiques dans les affaires de mariage et de divorce, en nous concentrant sur les droits des parties concernées et la résolution des litiges de la meilleure manière possible. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('marriage-procedures'); return false;">Procédures de mariage et de divorce</a></li><li><a href="#" onclick="showContent('marital-agreements'); return false;">Contrats de mariage</a></li><li><a href="#" onclick="showContent('marital-disputes'); return false;">Résolution des litiges matrimoniaux</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'marriage-procedures': `<h2>Procédures de mariage et de divorce</h2><p>Nous fournissons une assistance juridique pour toutes les procédures de mariage et de divorce, y compris la préparation et la soumission des documents aux tribunaux compétents. Nous veillons à ce que les procédures se déroulent en douceur et conformément à la loi.</p><p>Nos services comprennent :</p><ul><li>La rédaction de contrats de mariage.</li><li>Les procédures de divorce.</li><li>La représentation des parties devant les tribunaux.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Retour aux Questions de mariage et divorce</a>`,
+                    'marital-agreements': `<h2>Contrats de mariage</h2><p>Nous aidons à rédiger des contrats de mariage pour protéger les biens et clarifier les droits et devoirs financiers des deux parties. Ces contrats offrent sécurité et clarté dans la relation matrimoniale.</p><p>Nos services comprennent :</p><ul><li>La rédaction de contrats de mariage.</li><li>L'examen des contrats.</li><li>Des conseils juridiques sur les accords.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Retour aux Questions de mariage et divorce</a>`,
+                    'marital-disputes': `<h2>Résolution des litiges matrimoniaux</h2><p>Nous fournissons une médiation et une assistance juridique pour résoudre les litiges qui surgissent entre les époux. Nous nous efforçons de trouver des solutions à l'amiable sans recourir au tribunal chaque fois que c'est possible, tout en protégeant les droits de chaque partie.</p><p>Nos services comprennent :</p><ul><li>La médiation dans les litiges matrimoniaux.</li><li>La rédaction d'accords de règlement.</li><li>Des conseils juridiques.</li></ul><a href="#" class="back-link" onclick="showContent('marriage-divorce'); return false;">&larr; Retour aux Questions de mariage et divorce</a>`,
+                    'insurance': `<h2>Assurances</h2><p>Nous fournissons des consultations juridiques et une représentation judiciaire dans toutes les affaires liées à l'assurance, en veillant à ce que nos clients reçoivent les indemnités auxquelles ils ont droit. Nos services incluent :</p><ul><li><a href="#" onclick="showContent('insurance-claims'); return false;">Réclamations d'assurance</a></li><li><a href="#" onclick="showContent('insurance-disputes'); return false;">Litiges avec les compagnies d'assurance</a></li><li><a href="#" onclick="showContent('court-representation'); return false;">Représentation en justice</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section'); return false;">&larr; Retour aux spécialisations</a>`,
+                    'insurance-claims': `<h2>Réclamations d'assurance</h2><p>Nous aidons les clients à déposer et à suivre les réclamations d'assurance pour s'assurer qu'ils reçoivent les indemnisations auxquelles ils ont droit. Nous fournissons des conseils juridiques sur leurs droits en cas de refus de paiement par la compagnie d'assurance.</p><p>Nos services comprennent :</p><ul><li>L'assistance à la préparation des réclamations.</li><li>La négociation avec les compagnies d'assurance.</li><li>La représentation légale en cas de refus de réclamation.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Retour aux Assurances</a>`,
+                    'insurance-disputes': `<h2>Litiges avec les compagnies d'assurance</h2><p>Nous représentons les clients dans les litiges avec les compagnies d'assurance, que ce soit en raison d'un refus de réclamation, d'un retard de paiement ou de toute autre violation de contrat. Nous nous efforçons de résoudre ces litiges rapidement et efficacement.</p><p>Nos services comprennent :</p><ul><li>La médiation et l'arbitrage.</li><li>Le contentieux devant le tribunal.</li><li>L'analyse des contrats pour vérifier les droits du client.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Retour aux Assurances</a>`,
+                    'court-representation': `<h2>Représentation en justice</h2><p>Nous représentons les clients devant les tribunaux dans les affaires d'assurance complexes. Nous avons de l'expérience dans le traitement des affaires qui nécessitent une expertise juridique spécialisée pour garantir que les clients obtiennent le meilleur résultat possible.</p><p>Nos services comprennent :</p><ul><li>La préparation des défenses juridiques.</li><li>La représentation du client lors des audiences judiciaires.</li><li>Le dépôt de recours juridiques.</li></ul><a href="#" class="back-link" onclick="showContent('insurance'); return false;">&larr; Retour aux Assurances</a>`
+                }
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function renderSpecializations() {
+            const specializationsList = document.getElementById('specializations-list');
+            specializationsList.innerHTML = '';
+            translations[currentLang].specializations.forEach(spec => {
+                const item = document.createElement('div');
+                item.className = 'specialization-item';
+                item.innerHTML = `<h3><a href="#" onclick="showSection('dynamic-content'); showContent('${spec.id}'); return false;">${spec.name}</a></h3>`;
+                specializationsList.appendChild(item);
+            });
+        }
+
+        function showSection(sectionId) {
+            document.querySelectorAll('main section').forEach(section => {
+                section.style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+            // Show specializations section after hero
+            if (sectionId === 'home-section') {
+                document.getElementById('specializations-section').style.display = 'block';
+            }
+        }
+        
+        function showContent(contentId) {
+            const content = translations[currentLang].content[contentId];
+            document.getElementById('content-container').innerHTML = content;
+            showSection('dynamic-content');
+            return false;
+        }
+        
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const langData = translations[lang];
+
+            document.documentElement.lang = lang;
+            document.documentElement.dir = langData.direction;
+            
+            document.title = langData.title;
+            document.getElementById('site-title').textContent = langData.siteTitle;
+            document.getElementById('hero-title').textContent = langData.heroTitle;
+            document.getElementById('hero-subtitle').textContent = langData.heroSubtitle;
+            document.getElementById('specializations-title').textContent = langData.specializationsTitle;
+            document.getElementById('contact-title').textContent = langData.contactTitle;
+            document.getElementById('contact-address').textContent = langData.contactAddress;
+            document.getElementById('contact-phone').innerHTML = langData.contactPhone;
+            document.getElementById('contact-email').textContent = langData.contactEmail;
+            document.getElementById('whatsapp-link').textContent = langData.whatsappLink;
+            document.getElementById('whatsapp-link').href = `https://wa.me/96171856207`;
+            document.getElementById('footer-text').innerHTML = langData.footerText;
+
+            renderSpecializations();
+            showSection('home-section');
+            document.getElementById('specializations-section').style.display = 'block'; // Ensure specializations show after home
+            document.getElementById('contact-section').style.display = 'block';
+            document.getElementById('dynamic-content').style.display = 'none';
+
+
+            // Set active link
+            document.querySelectorAll('.lang-switcher a').forEach(link => {
+                link.classList.remove('active');
+            });
+            document.querySelector(`.lang-switcher a[onclick*="'${lang}'"]`).classList.add('active');
+        }
+
+        // Initial setup on page load
+        window.onload = function() {
+            switchLanguage('ar');
+        };
+    </script>
+</body>
+</html>

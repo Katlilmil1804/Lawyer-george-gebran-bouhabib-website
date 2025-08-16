@@ -128,6 +128,284 @@
         .specialization-content {
             display: none;
         }
+        .specialization-content h2, 
+        .specialization-content p, 
+        .specialization-content ul {
+            text-align: right; /* Default for RTL */
+        }
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 id="site-title"></h1>
+            <nav class="lang-switcher">
+                <a href="#" class="active" onclick="switchLanguage('ar', this)">العربية</a>
+                <a href="#" onclick="switchLanguage('en', this)">English</a>
+                <a href="#" onclick="switchLanguage('fr', this)">Français</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home-section">
+            <div class="container">
+                <h2 id="hero-title"></h2>
+                <p id="hero-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="section" id="specializations-section">
+            <div class="container">
+                <h2 id="specializations-title"></h2>
+                <div class="specializations-grid" id="specializations-list">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <div class="container">
+                <h2 id="contact-title"></h2>
+                <div class="contact-info">
+                    <p id="contact-address"></p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-email"></p>
+                    <a href="#" target="_blank" id="whatsapp-link"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section specialization-content" id="dynamic-content">
+            <div class="container" id="content-container"></div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                title: 'المحامي جورج جبران بوحبيب | محامٍ في الاستئناف',
+                siteTitle: 'المحامي جورج جبران بوحبيب',
+                heroTitle: 'عقود من الخبرة في القانون، التزام راسخ بالعدالة',
+                heroSubtitle: 'محامٍ في الاستئناف في نقابة المحامين في بيروت منذ عام 1992',
+                specializationsTitle: 'تخصصاتنا القانونية',
+                specializations: [
+                    { name: 'القانون العقاري', id: 'real-estate' },
+                    { name: 'القانون الجنائي', id: 'criminal-law' },
+                    { name: 'قانون الأسرة', id: 'family-law' },
+                    { name: 'حصر الإرث', id: 'inheritance' },
+                    { name: 'تأسيس الشركات', id: 'company-formation' },
+                    { name: 'قانون العمل', id: 'labor-law' },
+                    { name: 'قضايا الزواج والطلاق', id: 'marriage-divorce' },
+                    { name: 'قضايا التأمين', id: 'insurance' }
+                ],
+                contactTitle: 'تواصل معنا',
+                contactAddress: 'بيروت، لبنان',
+                contactPhone: 'رقم الهاتف / واتساب: <span dir="ltr">+961 71 856207</span>',
+                contactEmail: 'البريد الإلكتروني: gabymic1804@outlook.com',
+                whatsappLink: 'أرسل رسالة واتساب',
+                footerText: '© 2025 المحامي جورج جبران بوحبيب. جميع الحقوق محفوظة.',
+                direction: 'rtl',
+                content: {
+                    'real-estate': {
+                        html: `<h2>القانون العقاري</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالقانون العقاري. تشمل خبراتنا الواسعة:</p><ul><li><a href="#" onclick="showContent('real-estate-litigation')">دعاوى عقارية</a></li><li><a href="#" onclick="showContent('rental-litigation')">دعاوى الإيجارات</a></li><li><a href="#" onclick="showContent('sales-contracts')">دعاوى عقود البيع</a></li><li><a href="#" onclick="showContent('real-estate-division')">القسمة العقارية</a></li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'criminal-law': {
+                        html: `<h2>خبرة في الدفاع الجنائي</h2><p>نقدم استشارات قانونية وتمثيلًا قضائيًا في مجموعة واسعة من القضايا الجنائية، مع التركيز على حقوق المتهمين وتطبيق القانون بإنصاف. تشمل خدماتنا:</p><ul><li>الدفاع في قضايا الجرائم الجنائية</li><li>التمثيل القانوني في التحقيقات</li><li>المساعدة القانونية للضحايا</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'family-law': {
+                        html: `<h2>نصائح وحلول في قضايا الأسرة</h2><p>ندرك حساسية قضايا الأسرة وأهمية التعامل معها بمهنية وحساسية عالية. نقدم الدعم القانوني في جميع جوانب قانون الأسرة، بما في ذلك:</p><ul><li>قضايا الحضانة والنفقة</li><li>الوصاية القانونية</li><li>الطلاق والانفصال</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'inheritance': {
+                        html: `<h2>إجراءات حصر الإرث</h2><p>نقدم استشارات وإجراءات قانونية لمساعدتك في قضايا حصر الإرث وتوزيع الممتلكات بشكل عادل ووفقًا للقوانين المعمول بها. تشمل خدماتنا:</p><ul><li>إجراءات حصر الإرث</li><li>توزيع الميراث</li><li>حل المنازعات المتعلقة بالتركات</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'company-formation': {
+                        html: `<h2>خدمات تأسيس الشركات</h2><p>نقدم المساعدة في جميع الإجراءات القانونية اللازمة لتأسيس شركتك، بدءًا من اختيار النوع القانوني المناسب وحتى استكمال التسجيل وتجهيز العقود. تشمل خدماتنا:</p><ul><li>اختيار الشكل القانوني للشركة</li><li>صياغة العقود والنظام الأساسي</li><li>إجراءات التسجيل في الجهات المختصة</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'labor-law': {
+                        html: `<h2>نصائح في قانون العمل</h2><p>نوفر استشارات قانونية متخصصة لحماية حقوق العمال وأصحاب العمل، بدءًا من صياغة العقود وحتى حل النزاعات. تشمل خدماتنا:</p><ul><li>صياغة ومراجعة عقود العمل</li><li>النزاعات العمالية والتحكيم</li><li>حماية حقوق العمال وأصحاب العمل</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'marriage-divorce': {
+                        html: `<h2>خبرة في القضايا الزوجية</h2><p>نوفر التوجيه القانوني في قضايا الزواج والطلاق، مع التركيز على حقوق الأطراف المعنية وحل الخلافات بأفضل الطرق الممكنة. تشمل خدماتنا:</p><ul><li>إجراءات الطلاق</li><li>تسوية الخلافات الزوجية</li><li>الاستشارات القانونية قبل الزواج</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'insurance': {
+                        html: `<h2>خبرة في مطالبات التأمين</h2><p>نحن نقدم استشارات قانونية وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالتأمين، لضمان حصول عملائنا على حقوقهم. تشمل خدماتنا:</p><ul><li>تسوية مطالبات التأمين</li><li>حل النزاعات مع شركات التأمين</li><li>تمثيل العملاء في المحاكم</li></ul><a href="#" class="back-link" onclick="showSection('specializations-section')">&larr; العودة إلى التخصصات</a>`
+                    },
+                    'real-estate-litigation': {
+                        html: `<h2>دعاوى عقارية</h2><p>نتولى جميع جوانب النزاعات العقارية، بما في ذلك نزاعات الملكية، والحدود، والمشاكل المتعلقة باتفاقيات الشراء. يقدم فريقنا تمثيلاً قانونيًا قوياً لحماية حقوق الملكية الخاصة بك.</p><p>تشمل خدماتنا:</p><ul><li>تمثيل العملاء في المحاكم في دعاوى العقارات.</li><li>التفاوض على التسويات.</li><li>تقديم المشورة بشأن الاستراتيجيات القانونية للنزاعات العقارية.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate')">&larr; العودة إلى القانون العقاري</a>`
+                    },
+                    'rental-litigation': {
+                        html: `<h2>دعاوى الإيجارات</h2><p>نحن نساعد كل من الملاك والمستأجرين في حل النزاعات المتعلقة باتفاقيات الإيجار. ويشمل ذلك قضايا مثل عمليات الإخلاء، وعدم دفع الإيجار، والإخلال بشروط العقد.</p><p>تشمل خدماتنا:</p><ul><li>تمثيل الملاك في إجراءات الإخلاء.</li><li>مساعدة المستأجرين في دعاوى الإخلاء غير القانوني.</li><li>صياغة ومراجعة اتفاقيات الإيجار لمنع النزاعات المستقبلية.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate')">&larr; العودة إلى القانون العقاري</a>`
+                    },
+                    'sales-contracts': {
+                        html: `<h2>دعاوى عقود البيع</h2><p>نقدم المساعدة القانونية للنزاعات التي تنشأ من عقود البيع العقارية. ويشمل ذلك القضايا المتعلقة بانتهاكات العقود، والتحريف، والفشل في الكشف عن العيوب.</p><p>تشمل خدماتنا:</p><ul><li>التقاضي في قضايا خرق العقود.</li><li>مراجعة عقود البيع لضمان الامتثال القانوني.</li><li>تقديم المشورة بشأن الآثار القانونية لشروط العقد.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate')">&larr; العودة إلى القانون العقاري</a>`
+                    },
+                    'real-estate-division': {
+                        html: `<h2>القسمة العقارية</h2><p>القسمة العقارية هي عملية تقسيم ملكية عقار مشترك بين عدة مالكين. يمكن أن تكون هذه القسمة اتفاقية أو قضائية، وفي كلتا الحالتين، نحن نقدم الدعم القانوني الكامل لضمان حقوق كل طرف.</p><p>تشمل خدماتنا:</p><ul><li>صياغة عقود القسمة الاتفاقية.</li><li>التمثيل القانوني في دعاوى القسمة القضائية.</li><li>تسوية النزاعات المتعلقة بتقسيم العقارات.</li></ul><a href="#" class="back-link" onclick="showContent('real-estate')">&larr; العودة إلى القانون العقاري</a>`
+                    }
+                }
+            },
+            en: {
+                title: 'Attorney George J. Bouhabib | Appellate Attorney',
+                siteTitle: 'Attorney George J. Bouhabib',
+                heroTitle: 'Decades of Legal Experience, Unwavering Commitment to Justice',
+                heroSubtitle: 'Appellate Attorney in the Beirut Bar Association since 1992',
+                specializationsTitle: 'Our Legal Specializations',
+                specializations: [
+                    { name: 'Real Estate Law', id: 'real-estate' },
+                    { name: 'Criminal Law', id: 'criminal-law' },
+                    { name: 'Family Law', id: 'family-law' },
+                    { name: 'Inheritance', id: 'inheritance' },
+                    { name: 'Company Formation', id: 'company-formation' },
+                    { name: 'Labor Law', id: 'labor-law' },
+                    { name: 'Marriage and Divorce Cases', id: 'marriage-divorce' },
+                    { name: 'Insurance Cases', id: 'insurance' }
+                ],
+                contactTitle: 'Contact Us',
+                contactAddress: 'Beirut, Lebanon',
+                contactPhone: 'Phone / WhatsApp: +961 71 856207',
+                contactEmail: 'Email: gabym<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي جورج جبران بوحبيب | محامٍ في الاستئناف</title>
+    <style>
+        /* CSS Styling for a Professional Look */
+        :root {
+            --primary-color: #004d99; /* A professional blue */
+            --secondary-color: #f2f2f2;
+            --text-color: #333;
+            --light-text: #777;
+            --accent-color: #d1b066; /* Gold/Bronze accent */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--text-color);
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        header {
+            background: #fff;
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .lang-switcher a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .lang-switcher a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 77, 153, 0.7), rgba(0, 77, 153, 0.7)), url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .specialization-item {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .specialization-item a {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: block;
+        }
+        .specialization-item h3 {
+            margin-top: 0;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .specialization-content {
+            display: none;
+        }
         .back-link {
             display: block;
             margin-top: 2rem;
@@ -4117,6 +4395,7 @@
     </script>
 </body>
 </html>
+
 
 
 

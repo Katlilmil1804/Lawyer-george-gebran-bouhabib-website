@@ -1,4 +1,379 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي جورج جبران بوحبيب | محامٍ في الاستئناف</title>
+    <style>
+        /* CSS Styling for a Professional Look */
+        :root {
+            --primary-color: #004d99; /* A professional blue */
+            --secondary-color: #f2f2f2;
+            --text-color: #333;
+            --light-text: #777;
+            --accent-color: #d1b066; /* Gold/Bronze accent */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--text-color);
+            text-align: right;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        header {
+            background: #fff;
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .lang-switcher a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .lang-switcher a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 77, 153, 0.7), rgba(0, 77, 153, 0.7)), url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .specialization-item {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .specialization-item a {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: block;
+        }
+        .specialization-item h3 {
+            margin-top: 0;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .specialization-content {
+            display: none;
+        }
+        .specialization-content h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: right;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        .specialization-content p, .specialization-content ul {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            text-align: right;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 id="site-title"></h1>
+            <nav class="lang-switcher">
+                <a href="#" class="active" onclick="switchLanguage('ar', this)">العربية</a>
+                <a href="#" onclick="switchLanguage('en', this)">English</a>
+                <a href="#" onclick="switchLanguage('fr', this)">Français</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home-section">
+            <div class="container">
+                <h2 id="hero-title"></h2>
+                <p id="hero-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="section" id="specializations-section">
+            <div class="container">
+                <h2 id="specializations-title"></h2>
+                <div class="specializations-grid" id="specializations-list">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <div class="container">
+                <h2 id="contact-title"></h2>
+                <div class="contact-info">
+                    <p id="contact-address"></p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-email"></p>
+                    <a href="#" target="_blank" id="whatsapp-link"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section specialization-content" id="real-estate-content">
+            <div class="container" id="real-estate-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="criminal-law-content">
+            <div class="container" id="criminal-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="family-law-content">
+            <div class="container" id="family-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="inheritance-content">
+            <div class="container" id="inheritance-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="company-formation-content">
+            <div class="container" id="company-formation-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="labor-law-content">
+            <div class="container" id="labor-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="marriage-divorce-content">
+            <div class="container" id="marriage-divorce-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="insurance-content">
+            <div class="container" id="insurance-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                title: 'المحامي جورج جبران بوحبيب | محامٍ في الاستئناف',
+                siteTitle: 'المحامي جورج جبران بوحبيب',
+                heroTitle: 'عقود من الخبرة في القانون، التزام راسخ بالعدالة',
+                heroSubtitle: 'محامٍ في الاستئناف في نقابة المحامين في بيروت منذ عام 1992',
+                specializationsTitle: 'تخصصاتنا القانونية',
+                specializations: [
+                    { name: 'القانون العقاري', id: 'real-estate' },
+                    { name: 'القانون الجنائي', id: 'criminal-law' },
+                    { name: 'قانون الأسرة', id: 'family-law' },
+                    { name: 'حصر الإرث', id: 'inheritance' },
+                    { name: 'تأسيس الشركات', id: 'company-formation' },
+                    { name: 'قانون العمل', id: 'labor-law' },
+                    { name: 'قضايا الزواج والطلاق', id: 'marriage-divorce' },
+                    { name: 'قضايا التأمين', id: 'insurance' }
+                ],
+                contactTitle: 'تواصل معنا',
+                contactAddress: 'بيروت، لبنان',
+                contactPhone: 'رقم الهاتف / واتساب: <span dir="ltr">+961 71 856207</span>',
+                contactEmail: 'البريد الإلكتروني: gabymic1804@outlook.com',
+                whatsappLink: 'أرسل رسالة واتساب',
+                footerText: '© 2025 المحامي جورج جبران بوحبيب. جميع الحقوق محفوظة.',
+                direction: 'rtl',
+                backLinkText: '&larr; العودة إلى الصفحة الرئيسية',
+                content: {
+                    'real-estate': `<h2>دعاوى القانون العقاري</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالقانون العقاري. تشمل خبراتنا الواسعة:</p><ul><li>دعاوى عقارية</li><li>دعاوى الإيجارات</li><li>دعاوى عقود البيع</li><li>القسمة العقارية</li></ul>`,
+                    'criminal-law': `<h2>خبرة في الدفاع الجنائي</h2><p>نقدم استشارات قانونية وتمثيلًا قضائيًا في مجموعة واسعة من القضايا الجنائية، مع التركيز على حقوق المتهمين وتطبيق القانون بإنصاف. تشمل خدماتنا:</p><ul><li>الدفاع في قضايا الجرائم الجنائية</li><li>التمثيل القانوني في التحقيقات</li><li>المساعدة القانونية للضحايا</li></ul>`,
+                    'family-law': `<h2>نصائح وحلول في قضايا الأسرة</h2><p>ندرك حساسية قضايا الأسرة وأهمية التعامل معها بمهنية وحساسية عالية. نقدم الدعم القانوني في جميع جوانب قانون الأسرة، بما في ذلك:</p><ul><li>قضايا الحضانة والنفقة</li><li>الوصاية القانونية</li><li>الطلاق والانفصال</li></ul>`,
+                    'inheritance': `<h2>إجراءات حصر الإرث</h2><p>نقدم استشارات وإجراءات قانونية لمساعدتك في قضايا حصر الإرث وتوزيع الممتلكات بشكل عادل ووفقًا للقوانين المعمول بها. تشمل خدماتنا:</p><ul><li>إجراءات حصر الإرث</li><li>توزيع الميراث</li><li>حل المنازعات المتعلقة بالتركات</li></ul>`,
+                    'company-formation': `<h2>خدمات تأسيس الشركات</h2><p>نقدم المساعدة في جميع الإجراءات القانونية اللازمة لتأسيس شركتك، بدءًا من اختيار النوع القانوني المناسب وحتى استكمال التسجيل وتجهيز العقود. تشمل خدماتنا:</p><ul><li>اختيار الشكل القانوني للشركة</li><li>صياغة العقود والنظام الأساسي</li><li>إجراءات التسجيل في الجهات المختصة</li></ul>`,
+                    'labor-law': `<h2>نصائح في قانون العمل</h2><p>نوفر استشارات قانونية متخصصة لحماية حقوق العمال وأصحاب العمل، بدءًا من صياغة العقود وحتى حل النزاعات. تشمل خدماتنا:</p><ul><li>صياغة ومراجعة عقود العمل</li><li>النزاعات العمالية والتحكيم</li><li>حماية حقوق العمال وأصحاب العمل</li></ul>`,
+                    'marriage-divorce': `<h2>خبرة في القضايا الزوجية</h2><p>نوفر التوجيه القانوني في قضايا الزواج والطلاق، مع التركيز على حقوق الأطراف المعنية وحل الخلافات بأفضل الطرق الممكنة. تشمل خدماتنا:</p><ul><li>إجراءات الطلاق</li><li>تسوية الخلافات الزوجية</li><li>الاستشارات القانونية قبل الزواج</li></ul>`,
+                    'insurance': `<h2>خبرة في مطالبات التأمين</h2><p>نحن نقدم استشارات قانونية وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالتأمين، لضمان حصول عملائنا على حقوقهم. تشمل خدماتنا:</p><ul><li>تسوية مطالبات التأمين</li><li>حل النزاعات مع شركات التأمين</li><li>تمثيل العملاء في المحاكم</li></ul>`
+                }
+            },
+            en: {
+                title: 'Attorney George J. Bouhabib | Appellate Attorney',
+                siteTitle: 'Attorney George J. Bouhabib',
+                heroTitle: 'Decades of Legal Experience, Unwavering Commitment to Justice',
+                heroSubtitle: 'Appellate Attorney in the Beirut Bar Association since 1992',
+                specializationsTitle: 'Our Legal Specializations',
+                specializations: [
+                    { name: 'Real Estate Law', id: 'real-estate' },
+                    { name: 'Criminal Law', id: 'criminal-law' },
+                    { name: 'Family Law', id: 'family-law' },
+                    { name: 'Inheritance', id: 'inheritance' },
+                    { name: 'Company Formation', id: 'company-formation' },
+                    { name: 'Labor Law', id: 'labor-law' },
+                    { name: 'Marriage and Divorce Cases', id: 'marriage-divorce' },
+                    { name: 'Insurance Cases', id: 'insurance' }
+                ],
+                contactTitle: 'Contact Us',
+                contactAddress: 'Beirut, Lebanon',
+                contactPhone: 'Phone / WhatsApp: +961 71 856207',
+                contactEmail: 'Email: gabymic1804@outlook.com',
+                whatsappLink: 'Send WhatsApp Message',
+                footerText: '© 2025 Attorney George J. Bouhabib. All rights reserved.',
+                direction: 'ltr',
+                backLinkText: '&larr; Back to Home',
+                content: {
+                    'real-estate': `<h2>Real Estate Lawsuits</h2><p>We provide specialized legal consultations and judicial representation in all cases related to real estate law. Our extensive expertise includes:</p><ul><li>Real estate lawsuits</li><li>Rental lawsuits</li><li>Sales contract lawsuits</li><li>Real estate division</li></ul>`,
+                    'criminal-law': `<h2>Experience in Criminal Defense</h2><p>We provide legal consultation and judicial representation in a wide range of criminal cases, with a focus on defendants' rights and the fair application of the law. Our services include:</p><ul><li>Defense in criminal offenses cases</li><li>Legal representation in investigations</li><li>Legal aid for victims</li></ul>`,
+                    'family-law': `<h2>Counseling and Solutions in Family Cases</h2><p>We understand the sensitivity of family cases and the importance of handling them with high professionalism and sensitivity. We provide legal support in all aspects of family law, including:</p><ul><li>Custody and alimony cases</li><li>Legal guardianship</li><li>Divorce and separation</li></ul>`,
+                    'inheritance': `<h2>Inheritance Procedures</h2><p>We provide legal consultations and procedures to assist you in inheritance cases and the fair distribution of assets according to applicable laws. Our services include:</p><ul><li>Inheritance inventory procedures</li><li>Distribution of inheritance</li><li>Resolving disputes related to estates</li></ul>`,
+                    'company-formation': `<h2>Company Formation Services</h2><p>We assist with all necessary legal procedures for establishing your company, from choosing the appropriate legal form to completing registration and preparing contracts. Our services include:</p><li>Choosing the legal form of the company</li><li>Drafting contracts and articles of association</li><li>Registration procedures with the competent authorities</li></ul>`,
+                    'labor-law': `<h2>Labor Law Counseling</h2><p>We provide specialized legal consultations to protect the rights of both employees and employers, from drafting contracts to resolving disputes. Our services include:</p><ul><li>Drafting and reviewing employment contracts</li><li>Labor disputes and arbitration</li><li>Protecting the rights of employees and employers</li></ul>`,
+                    'marriage-divorce': `<h2>Experience in Matrimonial Cases</h2><p>We provide legal guidance in marriage and divorce cases, focusing on the rights of the involved parties and resolving disputes in the best possible way. Our services include:</p><ul><li>Divorce procedures</li><li>Marital dispute resolution</li><li>Pre-nuptial legal advice</li></ul>`,
+                    'insurance': `<h2>Experience in Insurance Claims</h2><p>We provide legal consultations and judicial representation in all insurance-related cases, ensuring our clients receive their rightful claims. Our services include:</p><ul><li>Settlement of insurance claims</li><li>Resolving disputes with insurance companies</li><li>Representing clients in court</li></ul>`
+                }
+            },
+            fr: {
+                title: 'Avocat George J. Bouhabib | Avocat d\'appel',
+                siteTitle: 'Avocat George J. Bouhabib',
+                heroTitle: 'Des décennies d\'expérience juridique, un engagement inébranlable envers la justice',
+                heroSubtitle: 'Avocat d\'appel au Barreau de Beyrouth depuis 1992',
+                specializationsTitle: 'Nos domaines de spécialisation',
+                specializations: [
+                    { name: 'Droit immobilier', id: 'real-estate' },
+                    { name: 'Droit pénal', id: 'criminal-law' },
+                    { name: 'Droit de la famille', id: 'family-law' },
+                    { name: 'Héritage', id: 'inheritance' },
+                    { name: 'Création d\'entreprises', id: 'company-formation' },
+                    { name: 'Droit du travail', id: 'labor-law' },
+                    { name: 'Questions de mariage et divorce', id: 'marriage-divorce' },
+                    { name: 'Assurances', id: 'insurance' }
+                ],
+                contactTitle: 'Contactez-nous',
+                contactAddress: 'Beyrouth, Liban',
+                contactPhone: 'Téléphone / WhatsApp: +961 71 856207',
+                whatsappLink: 'Envoyer un message WhatsApp',
+                contactEmail: 'E-mail: gabymic1804@outlook.com',
+                footerText: '© 2025 Avocat George J. Bouhabib. Tous droits réservés.',
+                direction: 'ltr',
+                backLinkText: '&larr; Retour à la page d\'accueil',
+                content: {
+                    'real-estate': `<h2>Droit immobilier</h2><p>Nous offrons des consultations juridiques spécialisées et une représentation judiciaire dans toutes les affaires liées au droit immobilier. Notre vaste expertise comprend :</p><ul><li>Poursuites immobilières</li><li>Procès de location</li><li>Procès de contrats de vente</li><li>Division immobilière</li></ul>`,
+                    'criminal-law': `<h2>Expérience en Défense Pénale</h2><p>Nous offrons des consultations juridiques et une représentation judiciaire dans un large éventail d'affaires pénales, en mettant l'accent sur les droits des accusés et l'application équitable de la loi. Nos services incluent :</p><ul><li>Défense dans les affaires pénales</li><li>Représentation légale dans les enquêtes</li><li>Aide juridique aux victimes</li></ul>`,
+                    'family-law': `<h2>Conseils et Solutions en Affaires Familiales</h2><p>Nous comprenons la sensibilité des affaires familiales و l'importance de les traiter avec un grand professionnalisme et une grande sensibilité. Nous offrons un soutien juridique dans tous les aspects du droit de la famille, y compris :</p><ul><li>Affaires de garde et de pension alimentaire</li><li>Tutelle légale</li><li>Divorce et séparation</li></ul>`,
+                    'inheritance': `<h2>Procédures de succession</h2><p>Nous fournissons des consultations et des procédures juridiques pour vous aider dans les affaires de succession et la distribution équitable des biens conformément aux lois en vigueur. Nos services incluent :</p><ul><li>Procédures d'inventaire de succession</li><li>Distribution de l'héritage</li><li>Résolution des litiges liés aux successions</li></ul>`,
+                    'company-formation': `<h2>Services de Création d'Entreprises</h2><p>Nous vous aidons dans toutes les procédures juridiques nécessaires à la création de votre entreprise, du choix de la forme juridique appropriée à la finalisation de l'enregistrement et à la préparation des contrats. Nos services incluent :</p><ul><li>Choix de la forme juridique de l'entreprise</li><li>Rédaction des contrats et des statuts</li><li>Procédures d'enregistrement auprès des autorités compétentes</li></ul>`,
+                    'labor-law': `<h2>Conseils en Droit du Travail</h2><p>Nous offrons des consultations juridiques spécialisées pour protéger les droits des employés et des employeurs, de la rédaction des contrats à la résolution des litiges. Nos services incluent :</p><ul><li>Rédaction et révision des contrats de travail</li><li>Litiges et arbitrage du travail</li><li>Protection des droits des employés et des employeurs</li></ul>`,
+                    'marriage-divorce': `<h2>Expérience dans les Affaires Matrimoniales</h2><p>Nous offrons des conseils juridiques dans les affaires de mariage et de divorce, en nous concentrant sur les droits des parties concernées et la résolution des litiges de la meilleure manière possible. Nos services incluent :</p><ul><li>Procédures de divorce</li><li>Résolution des litiges matrimoniaux</li><li>Conseils juridiques prénuptiaux</li></ul>`,
+                    'insurance': `<h2>Expérience en Réclamations d'Assurance</h2><p>Nous offrons des consultations juridiques et une représentation judiciaire dans toutes les affaires liées à l'assurance, en veillant à ce que nos clients obtiennent leurs droits. Nos services incluent :</p><ul><li>Règlement des réclamations d'assurance</li><li>Résolution des litiges avec les compagnies d'assurance</li><li>Représentation des clients devant les tribunaux</li></ul>`
+                }
+            }
+        };
+
+        const sections = ['home-section', 'specializations-section', 'contact-section'];
+        const specializationContents = ['real-estate-content', 'criminal-law-content', 'family-law-content', 'inheritance-content', 'company-formation-content', 'labor-law-content', 'marriage-divorce-content', 'insurance-content'];
+
+        function showSection(sectionId) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            specializationContents.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+
+            if (sectionId === 'home') {
+                sections.forEach(id => {
+                    document.getElementById(id).style.display = 'block';
+                });
+            } else {
+                document.getElementById(sectionId).style.display = 'block';
+            }
+        }
+        
+        function switchLanguage(lang, element) {
+            document.documentElement.lang = lang;
+            document.body.style.direction = translations[lang].direction;
+            document.title = translations[lang].title;
+            document.getElementById('site-title').textContent = translations[lang].siteTitle;
+            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+            document.getElementById('hero-subtitle').textContent = translations[lang].﻿<!DOCTYPE html>
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
@@ -1544,6 +1919,7 @@
     </script>
 </body>
 </html>
+
 
 
 

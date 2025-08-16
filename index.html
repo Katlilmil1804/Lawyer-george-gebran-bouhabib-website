@@ -157,6 +157,354 @@
         <div class="container">
             <h1 id="site-title"></h1>
             <nav class="lang-switcher">
+                <a href="ar.html" class="active">العربية</a>
+                <a href="en.html">English</a>
+                <a href="fr.html">Français</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="home-section">
+            <div class="container">
+                <h2 id="hero-title"></h2>
+                <p id="hero-subtitle"></p>
+            </div>
+        </section>
+
+        <section class="section" id="specializations-section">
+            <div class="container">
+                <h2 id="specializations-title"></h2>
+                <div class="specializations-grid" id="specializations-list">
+                    </div>
+            </div>
+        </section>
+
+        <section class="section" id="contact-section">
+            <div class="container">
+                <h2 id="contact-title"></h2>
+                <div class="contact-info">
+                    <p id="contact-address"></p>
+                    <p id="contact-phone"></p>
+                    <p id="contact-email"></p>
+                    <a href="#" target="_blank" id="whatsapp-link"></a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section specialization-content" id="real-estate-content">
+            <div class="container" id="real-estate-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="criminal-law-content">
+            <div class="container" id="criminal-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="family-law-content">
+            <div class="container" id="family-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="inheritance-content">
+            <div class="container" id="inheritance-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="company-formation-content">
+            <div class="container" id="company-formation-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="labor-law-content">
+            <div class="container" id="labor-law-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+        
+        <section class="section specialization-content" id="marriage-divorce-content">
+            <div class="container" id="marriage-divorce-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+        <section class="section specialization-content" id="insurance-content">
+            <div class="container" id="insurance-text"></div>
+            <a href="#" class="back-link" onclick="showSection('home')"></a>
+        </section>
+
+    </main>
+
+    <footer>
+        <p id="footer-text"></p>
+    </footer>
+
+    <script>
+        const translations = {
+            ar: {
+                title: 'المحامي جورج جبران بوحبيب | محامٍ في الاستئناف',
+                siteTitle: 'المحامي جورج جبران بوحبيب',
+                heroTitle: 'عقود من الخبرة في القانون، التزام راسخ بالعدالة',
+                heroSubtitle: 'محامٍ في الاستئناف في نقابة المحامين في بيروت منذ عام 1992',
+                specializationsTitle: 'تخصصاتنا القانونية',
+                specializations: [
+                    { name: 'القانون العقاري', id: 'real-estate' },
+                    { name: 'القانون الجنائي', id: 'criminal-law' },
+                    { name: 'قانون الأسرة', id: 'family-law' },
+                    { name: 'حصر الإرث', id: 'inheritance' },
+                    { name: 'تأسيس الشركات', id: 'company-formation' },
+                    { name: 'قانون العمل', id: 'labor-law' },
+                    { name: 'قضايا الزواج والطلاق', id: 'marriage-divorce' },
+                    { name: 'قضايا التأمين', id: 'insurance' }
+                ],
+                contactTitle: 'تواصل معنا',
+                contactAddress: 'بيروت، لبنان',
+                contactPhone: 'رقم الهاتف / واتساب: <span dir="ltr">+961 71 856207</span>',
+                contactEmail: 'البريد الإلكتروني: gabymic1804@outlook.com',
+                whatsappLink: 'أرسل رسالة واتساب',
+                footerText: '© 2025 المحامي جورج جبران بوحبيب. جميع الحقوق محفوظة.',
+                direction: 'rtl',
+                backLinkText: '&larr; العودة إلى الصفحة الرئيسية',
+                content: {
+                    'real-estate': `<h2>القانون العقاري</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالقانون العقاري. تشمل خبراتنا الواسعة:</p><ul><li><a href="#" onclick="showSubContent('real-estate-litigation')">دعاوى عقارية</a></li><li><a href="#" onclick="showSubContent('rental-litigation')">دعاوى الإيجارات</a></li><li><a href="#" onclick="showSubContent('sales-contracts')">دعاوى عقود البيع</a></li><li><a href="#" onclick="showSubContent('real-estate-division')">القسمة العقارية</a></li></ul>`,
+                    'criminal-law': `<h2>خبرة في الدفاع الجنائي</h2><p>نقدم استشارات قانونية وتمثيلًا قضائيًا في مجموعة واسعة من القضايا الجنائية، مع التركيز على حقوق المتهمين وتطبيق القانون بإنصاف. تشمل خدماتنا:</p><ul><li>الدفاع في قضايا الجرائم الجنائية</li><li>التمثيل القانوني في التحقيقات</li><li>المساعدة القانونية للضحايا</li></ul>`,
+                    'family-law': `<h2>نصائح وحلول في قضايا الأسرة</h2><p>ندرك حساسية قضايا الأسرة وأهمية التعامل معها بمهنية وحساسية عالية. نقدم الدعم القانوني في جميع جوانب قانون الأسرة، بما في ذلك:</p><ul><li>قضايا الحضانة والنفقة</li><li>الوصاية القانونية</li><li>الطلاق والانفصال</li></ul>`,
+                    'inheritance': `<h2>إجراءات حصر الإرث</h2><p>نقدم استشارات وإجراءات قانونية لمساعدتك في قضايا حصر الإرث وتوزيع الممتلكات بشكل عادل ووفقًا للقوانين المعمول بها. تشمل خدماتنا:</p><ul><li>إجراءات حصر الإرث</li><li>توزيع الميراث</li><li>حل المنازعات المتعلقة بالتركات</li></ul>`,
+                    'company-formation': `<h2>خدمات تأسيس الشركات</h2><p>نقدم المساعدة في جميع الإجراءات القانونية اللازمة لتأسيس شركتك، بدءًا من اختيار النوع القانوني المناسب وحتى استكمال التسجيل وتجهيز العقود. تشمل خدماتنا:</p><ul><li>اختيار الشكل القانوني للشركة</li><li>صياغة العقود والنظام الأساسي</li><li>إجراءات التسجيل في الجهات المختصة</li></ul>`,
+                    'labor-law': `<h2>نصائح في قانون العمل</h2><p>نوفر استشارات قانونية متخصصة لحماية حقوق العمال وأصحاب العمل، بدءًا من صياغة العقود وحتى حل النزاعات. تشمل خدماتنا:</p><ul><li>صياغة ومراجعة عقود العمل</li><li>النزاعات العمالية والتحكيم</li><li>حماية حقوق العمال وأصحاب العمل</li></ul>`,
+                    'marriage-divorce': `<h2>خبرة في القضايا الزوجية</h2><p>نوفر التوجيه القانوني في قضايا الزواج والطلاق، مع التركيز على حقوق الأطراف المعنية وحل الخلافات بأفضل الطرق الممكنة. تشمل خدماتنا:</p><ul><li>إجراءات الطلاق</li><li>تسوية الخلافات الزوجية</li><li>الاستشارات القانونية قبل الزواج</li></ul>`,
+                    'insurance': `<h2>خبرة في مطالبات التأمين</h2><p>نحن نقدم استشارات قانونية وتمثيلًا قضائيًا في جميع القضايا المتعلقة بالتأمين، لضمان حصول عملائنا على حقوقهم. تشمل خدماتنا:</p><ul><li>تسوية مطالبات التأمين</li><li>حل النزاعات مع شركات التأمين</li><li>تمثيل العملاء في المحاكم</li></ul>`,
+                    'real-estate-division': `<h2>القسمة العقارية</h2><p>القسمة العقارية هي عملية تقسيم ملكية عقار مشترك بين عدة مالكين. يمكن أن تكون هذه القسمة اتفاقية أو قضائية، وفي كلتا الحالتين، نحن نقدم الدعم القانوني الكامل لضمان حقوق كل طرف.</p><p>تشمل خدماتنا:</p><ul><li>صياغة عقود القسمة الاتفاقية.</li><li>التمثيل القانوني في دعاوى القسمة القضائية.</li><li>تسوية النزاعات المتعلقة بتقسيم العقارات.</li></ul><a href="#" class="back-link" onclick="showSection('real-estate-content')">&larr; العودة إلى القانون العقاري</a>`
+                }
+            }
+        };
+
+        const sections = ['home-section', 'specializations-section', 'contact-section'];
+        const specializationContents = ['real-estate-content', 'criminal-law-content', 'family-law-content', 'inheritance-content', 'company-formation-content', 'labor-law-content', 'marriage-divorce-content', 'insurance-content'];
+
+        function showSection(sectionId) {
+            sections.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            specializationContents.forEach(id => {
+                document.getElementById(id).style.display = 'none';
+            });
+            document.getElementById(sectionId).style.display = 'block';
+        }
+        
+        function showSpecialization(specId) {
+            showSection(`${specId}-content`);
+        }
+
+        function showSubContent(subId) {
+            const content = translations.ar.content[subId];
+            const contentDiv = document.getElementById('real-estate-text');
+            contentDiv.innerHTML = content;
+            document.querySelector('.back-link').innerHTML = ' &larr; العودة إلى القانون العقاري';
+        }
+
+        function switchLanguage() {
+            const lang = 'ar';
+            document.documentElement.lang = lang;
+            document.body.style.direction = translations[lang].direction;
+            document.title = translations[lang].title;
+            document.getElementById('site-title').textContent = translations[lang].siteTitle;
+            document.getElementById('hero-title').textContent = translations[lang].heroTitle;
+            document.getElementById('hero-subtitle').textContent = translations[lang].heroSubtitle;
+            document.getElementById('specializations-title').textContent = translations[lang].specializationsTitle;
+            document.getElementById('contact-title').textContent = translations[lang].contactTitle;
+            document.getElementById('contact-address').textContent = translations[lang].contactAddress;
+            document.getElementById('contact-phone').innerHTML = translations[lang].contactPhone; // Use innerHTML to render the span tag
+            document.getElementById('contact-email').textContent = translations[lang].contactEmail;
+            document.getElementById('whatsapp-link').textContent = translations[lang].whatsappLink;
+            document.getElementById('whatsapp-link').href = `https://wa.me/96171856207`;
+            document.getElementById('footer-text').innerHTML = translations[lang].footerText;
+            
+            const specializationsList = document.getElementById('specializations-list');
+            specializationsList.innerHTML = '';
+            translations[lang].specializations.forEach(spec => {
+                const item = document.createElement('div');
+                item.className = 'specialization-item';
+                item.innerHTML = `<h3><a href="#" onclick="showSpecialization('${spec.id}')">${spec.name}</a></h3>`;
+                specializationsList.appendChild(item);
+            });
+
+            // Update specialization content
+            for (const id in translations[lang].content) {
+                document.getElementById(`${id}-text`).innerHTML = translations[lang].content[id];
+            }
+
+            // Update back to home links
+            document.querySelectorAll('.back-link').forEach(link => {
+                link.innerHTML = translations[lang].backLinkText;
+            });
+        }
+
+        // Initial language setting
+        window.onload = function() {
+            switchLanguage();
+            showSection('home-section');
+        };
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المحامي جورج جبران بوحبيب | محامٍ في الاستئناف</title>
+    <style>
+        /* CSS Styling for a Professional Look */
+        :root {
+            --primary-color: #004d99; /* A professional blue */
+            --secondary-color: #f2f2f2;
+            --text-color: #333;
+            --light-text: #777;
+            --accent-color: #d1b066; /* Gold/Bronze accent */
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #fff;
+            color: var(--text-color);
+            text-align: right;
+            direction: rtl;
+        }
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 2rem;
+        }
+        header {
+            background: #fff;
+            color: var(--text-color);
+            padding: 1rem 0;
+            border-bottom: 3px solid var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        .lang-switcher a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+            cursor: pointer;
+        }
+        .lang-switcher a.active {
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+        }
+        .hero {
+            background: linear-gradient(rgba(0, 77, 153, 0.7), rgba(0, 77, 153, 0.7)), url('https://via.placeholder.com/1500x500') no-repeat center center/cover;
+            color: #fff;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+        }
+        .section {
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--secondary-color);
+        }
+        .section h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .specializations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            text-align: center;
+        }
+        .specialization-item {
+            background: var(--secondary-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            cursor: pointer;
+        }
+        .specialization-item a {
+            text-decoration: none;
+            color: var(--primary-color);
+            display: block;
+        }
+        .specialization-item h3 {
+            margin-top: 0;
+        }
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .contact-info p {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .specialization-content {
+            display: none;
+        }
+        .specialization-content h2 {
+            color: var(--primary-color);
+            font-size: 2rem;
+            text-align: right;
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+        .specialization-content p, .specialization-content ul {
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        .back-link {
+            display: block;
+            margin-top: 2rem;
+            text-align: right;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1 id="site-title"></h1>
+            <nav class="lang-switcher">
                 <a href="#" class="active" onclick="switchLanguage('ar', this)">العربية</a>
                 <a href="en.html" onclick="switchLanguage('en', this)">English</a>
                 <a href="fr.html" onclick="switchLanguage('fr', this)">Français</a>
@@ -2997,6 +3345,7 @@
     </script>
 </body>
 </html>
+
 
 
 

@@ -77,13 +77,16 @@
             align-items: center;
             gap: 1.5rem;
         }
+        /* كلاس معدل لضمان التفاف الصورة الدائرية بدقة */
         .hero-avatar {
-            width: 180px;
-            height: 180px;
+            width: 190px;
+            height: 190px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--accent-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            object-position: center top; /* يركز على الوجه والأكتاف بالرداء القانوني */
+            border: 4px solid var(--accent-color);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+            background-color: var(--secondary-color); /* خلفية احتياطية راقية لحين قراءة الملف */
         }
         .hero h2 {
             font-size: 2.4rem;
@@ -346,7 +349,7 @@
                     'media-legislations': `<h2>التشريعات الإعلامية وقوانين البث وحقوق الملكية الفكرية</h2><p>تقديم استشارات قانونية متخصصة ومصاغة بعناية فائقة في شؤون الإنتاج الإعلامي، عقود التوزيع الفني، حقوق البث التلفزيوني والرقمي، وحماية الملكية الفكرية والعلامات التجارية للشركات والأفراد، مستندين في ذلك إلى إرث حافل وعميق في العمل مع الشبكات الإعلامية الدولية،</p>`,
                     'judicial-translation': `<h2>ترجمة الأحكام القضائية والمذكرات والمستندات الرسمية</h2><p>ترجمة قانونية تخصصية ومعقمة للأحكام الصادرة عن المحاكم الأجنبية، مذكرات الدفاع، المستندات الثبوتية، والتقارير المالية، بنقل دقيق ورصين يحفظ القيمة القانونية والحجية الإثباتية للنص الأصلي أمام كافة المراجع القضائية والإدارية،</p>`,
                     'company-formation': `<h2>قانون الأعمال وتأسيس الشركات وحوكمتها</h2><p>يوفر مكتبنا منظومة متكاملة من الخدمات القانونية الموجهة لرجال الأعمال، الشركات الناشئة، والمجموعات التجارية العائلية، بهدف حماية الاستثمارات وتأمين البيئة القانونية المثالية لنمو الأعمال، وتشمل خدماتنا بالتفصيل:</p><ul><li>اختيار وهيكلة الشكل القانوني للشركات (محدودة المسؤولية، مساهمة، تضامن)،</li><li>حوكمة الشركات، تنظيم محاضر مجالس الإدارة والجمعيات العمومية وصياغة الأنظمة الأساسية،</li><li>إعداد الرأي القانوني (Legal Opinion) للمستثمرين الأجانب والمغتربين اللبنانيين حول مشاريعهم الاستثمارية،</li><li>تخطيط الشركات العائلية وضمان انتقال الحصص والأسهم بين الأجيال بسلاسة قانونية وضريبية،</li></ul>`,
-                    'real-estate': `<h2>القانون العقاري ونزاعات الملكية</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلاً قضائياً راسخاً في جميع القضايا المتعلقة بالقانون العقاري، وتشمل خبراتنا الواسعة حماية الثروة العقارية وإدارة الأصول:</p><ul><li>الدعاوى العقارية ونزاعات الملكية، تثبيت الحقوق، ورفع التعديات،</li><li>قوانين الإيجارات السكنية وغير السكنية المعقدة (الأنظمة القديمة والجديدة وتعديلاتها)،</li><li>ملاحقة النزاعات الناشئة عن نكول عقود البيع العقارية وطلب التنفيذ التمهيدي،</li><li>إجراءات القسمة العقارية وتصفية الشيوع بين الشركاء أو الورثة (سواء كانت رضائية اتفاقية أو قضائية)،</li></ul>`,
+                    'real-estate': `<h2>القانون العقاري ونزاعات الملكية</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلاً قضائياً راسخاً في جميع القضايا المتعلقة بالقانون العقاري، وتشمل خبراتنا الواسعة حماية الثروة العقارية وإدارة الأصول:</p><ul><li>الدعاوى العقارية ونزاعات الملكية، تثبيت الحقوق، ورفع التعديات,</li><li>قوانين الإيجارات السكنية وغير السكنية المعقدة (الأنظمة القديمة والجديدة وتعديلاتها)،</li><li>ملاحقة النزاعات الناشئة عن نكول عقود البيع العقارية وطلب التنفيذ التمهيدي،</li><li>إجراءات القسمة العقارية وتصفية الشيوع بين الشركاء أو الورثة (سواء كانت رضائية اتفاقية أو قضائية)،</li></ul>`,
                     'inheritance': `<h2>حصر الإرث والتركات العائلية ونزاعاتها</h2><p>نواكب العائلات في تنظيم شؤون تركاتهم وتصفيتها لضمان انتقال الحقوق والمقتنيات بسلاسة وفقاً للقوانين المرعية، وتشمل الخدمات:</p><ul><li>المعاملات الإدارية والقضائية لاستصدار حصر الإرث، تصفية التركات، ونقل الملكيات،</li><li>إدارة وتسوية نزاعات الورثة بالطرق الودية وصياغة اتفاقات القسمة، أو عبر التقاضي عند تعذر الاتفاق،</li><li>التخطيط الاستباقي لحماية الأصول العائلية وصياغة الوصايا القانونية المتكاملة وضبط آثارها الضريبية،</li></ul>`,
                     'labor-law': `<h2>قانون العمل ومنازعات الاستخدام</h2><p>نصون مصالح وحقوق أطراف الإنتاج (أصحاب العمل والأجراء) من خلال الاستشارات الدقيقة والتمثيل أمام مجالس العمل التحكيمية:</p><ul><li>صياغة عقود العمل الفردية والاتفاقيات الجماعية ولوائح العمل الداخلية للشركات،</li><li>التمثيل والتقاضي في دعاوى الصرف التعسفي، المطالبة ببدل الإنذار، والتعويضات المستحقة،</li><li>الاستشارات المتعلقة بالضمان الاجتماعي، حوادث العمل، وبراءات الذمة،</li></ul>`,
                     'criminal-law': `<h2>قانون العقوبات والدفاع الجنائي</h2><p>نؤمن بأن حق الدفاع هو قدس أقدس القوانين، ويقدم مكتبنا تمثيلاً صارماً في القضايا الجزائية لحماية الحريات والضمانات القانونية:</p><ul><li>مواكبة وحضور التحقيقات الأولية أمام الضابطة العدلية والنيابات العامة وقضاة التحقيق،</li><li>إعداد دفوع ومذكرات الدفاع والترافع أمام محاكم الجنايات، الجنح، والمطبوعات،</li><li>تمثيل الضحايا والمدعين الشخصيين لتحصيل حقوقهم والتعويض عن الأضرار الناشئة عن الجرائم،</li></ul>`,
@@ -428,7 +431,7 @@
                 content: {
                     'legal-translation': `<h2>Rédaction Bilingue & Contrats Internationaux</h2><p>Fort d'une expertise de plus de 35 ans auprès de grands réseaux de médias internationaux (tels que MBC, OSN, et Discovery), notre cabinet offre une ingénierie juridique bilingue avancée :</p><ul><li><a href="#" onclick="showContent('bilingual-drafting'); return false;">Rédaction de contrats bilingues juxtaposés (Arabe/Anglais)</a></li><li><a href="#" onclick="showContent('international-contracts'); return false;">Analyse et révision de traités commerciaux internationaux</a></li><li><a href="#" onclick="showContent('media-legislations'); return false;">Conseil en droit des médias et propriété intellectuelle</a></li><li><a href="#" onclick="showContent('judicial-translation'); return false;">Traduction certifiée d'arrêts judiciaires et actes officiels</a></li></ul>`,
                     'bilingual-drafting': `<h2>Contrats Bilingues Juxtaposés</h2><p>Structure rigoureuse préservant la stricte équivalence conceptuelle entre l'arabe et l'anglais au sein du même acte, éliminant ainsi tout risque de divergence interprétative.</p>`,
-                    'international-contracts': `<h2>Traités Commerciaux Internationaux</h2><p>Mise en conformité des pactes d'actionnaires, contrats de franchise et statuts d'agences étrangères avec l'ordre public libanais et les conventions transnationales.</p>`,
+                    'international-contracts': `<h2>Traité Commerciaux Internationaux</h2><p>Mise en conformité des pactes d'actionnaires, contrats de franchise et statuts d'agences étrangères avec l'ordre public libanais et les conventions transnationales.</p>`,
                     'media-legislations': `<h2>Droit des Médias & Propriété Intellectuelle</h2><p>Assistance pointue pour l'audiovisuel, la distribution artistique et le droit d'auteur numérique, forte d'une longue pratique avec les chaînes satellitaires.</p>`,
                     'judicial-translation': `<h2>Traduction d'Actes Judiciaires & Officiels</h2><p>Translating de jugements étrangers et conclusions de défense avec exactitude pour maintenir leur pleine force probante devant les juridictions compétentes.</p>`,
                     'company-formation': `<h2>Droit des Affaires & Sociétés</h2><p>Nous offrons des services intégrés pour structurer, auditer et pérenniser vos activités commerciales au Liban et à l'étranger :</p><ul><li>Choix de la forme juridique et constitution de sociétés (SARL, SAL, Sociétés de personnes).</li><li>Gouvernance d'entreprise, rédaction des statuts et procès-verbaux.</li><li>Contrats commerciaux internationaux, accords de distribution et franchises.</li><li>Consultations transfrontalières et avis juridiques (Legal Opinions) pour entités étrangères.</li></ul>`,

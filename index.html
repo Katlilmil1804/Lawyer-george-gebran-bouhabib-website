@@ -20,6 +20,7 @@
             padding: 0;
             background-color: #fff;
             color: var(--text-color);
+            transition: direction 0.3s;
         }
         .container {
             max-width: 1100px;
@@ -32,6 +33,8 @@
             color: var(--text-color);
             padding: 1.5rem 0;
             border-bottom: 3px solid var(--primary-color);
+        }
+        header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -59,27 +62,40 @@
             border-bottom: 2px solid var(--accent-color);
         }
         .hero {
-            background: linear-gradient(rgba(12, 35, 64, 0.88), rgba(12, 35, 64, 0.88)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1500') no-repeat center center/cover;
+            background: linear-gradient(rgba(12, 35, 64, 0.90), rgba(12, 35, 64, 0.90)), url('https://images.unsplash.com/photo-1589829545856-d10d557cf95f?q=80&w=1500') no-repeat center center/cover;
             color: #fff;
-            height: 420px;
+            padding: 4rem 0;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
             margin-bottom: 2rem;
         }
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+        .hero-avatar {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
         .hero h2 {
-            font-size: 2.6rem;
-            margin-bottom: 1rem;
+            font-size: 2.4rem;
+            margin: 0;
             font-weight: normal;
             letter-spacing: 0.5px;
         }
         .hero p {
             font-size: 1.25rem;
-            max-width: 750px;
+            max-width: 850px;
             color: var(--accent-color);
-            margin-top: 0.5rem;
+            margin: 0;
         }
         .section {
             padding: 3rem 0;
@@ -112,6 +128,10 @@
             color: #333;
             margin-bottom: 2rem;
             line-height: 1.9;
+        }
+        body[dir="ltr"] .philosophy-box {
+            border-right: none;
+            border-left: 4px solid var(--accent-color);
         }
         .specializations-grid {
             display: grid;
@@ -207,8 +227,7 @@
             border-bottom-color: var(--accent-color);
         }
         .specialization-content ul {
-            list-style: none;
-            padding: 0;
+            padding: 0 1.5rem;
         }
         .specialization-content li {
             margin-bottom: 0.8rem;
@@ -230,9 +249,9 @@
         <div class="container">
             <h1 id="site-title"></h1>
             <nav class="lang-switcher">
-                <a href="#" class="active" onclick="switchLanguage('ar'); return false;">العربية</a>
-                <a href="#" onclick="switchLanguage('en'); return false;">English</a>
-                <a href="#" onclick="switchLanguage('fr'); return false;">Français</a>
+                <a href="#" id="lang-ar" class="active" onclick="switchLanguage('ar'); return false;">العربية</a>
+                <a href="#" id="lang-en" onclick="switchLanguage('en'); return false;">English</a>
+                <a href="#" id="lang-fr" onclick="switchLanguage('fr'); return false;">Français</a>
             </nav>
         </div>
     </header>
@@ -241,8 +260,11 @@
         <!-- Home / Hero Section -->
         <section class="hero" id="home-section">
             <div class="container">
-                <h2 id="hero-title"></h2>
-                <p id="hero-subtitle"></p>
+                <div class="hero-content">
+                    <img src="george-robe.png" alt="المحامي جورج بو حبيب" class="hero-avatar">
+                    <h2 id="hero-title"></h2>
+                    <p id="hero-subtitle"></p>
+                </div>
             </div>
         </section>
 
@@ -270,7 +292,7 @@
                     <p id="contact-address"></p>
                     <p id="contact-phone"></p>
                     <p id="contact-email"></p>
-                    <a href="#" target="_blank" id="whatsapp-link" style="margin-bottom: 10px;"></a>
+                    <a href="https://wa.me/96171856207" target="_blank" id="whatsapp-link" style="margin-bottom: 10px;"></a>
                     <a href="https://www.linkedin.com" target="_blank" class="linkedin-btn" id="linkedin-link">LinkedIn Profile</a>
                 </div>
             </div>
@@ -315,26 +337,21 @@
                 linkedinLink: 'تواصل معنا مهنياً عبر منصة LinkedIn',
                 footerText: '© 2026 المحامي جورج جبران بو حبيب. جميع الحقوق محفوظة.',
                 direction: 'rtl',
+                backToMain: '&larr; العودة إلى الصفحة الرئيسية',
+                backToSection: '&larr; العودة إلى قسم الصياغة والترجمة',
                 content: {
-                    'legal-translation': `<h2>الصياغة والترجمة القانونية ثنائية اللغة والعقود الدولية</h2><p>بفضل الخبرة الطويلة الممتدة لأكثر من 35 عاماً في الصياغة القضائية والترجمة الاحترافية لشبكات الإعلام الدولية الكبرى (مثل MBC و OSN و Discovery)، يقدم مكتبنا حلولاً تخصصية فريدة ومتقدمة تتجاوز النقل اللغوي التقليدي لتشمل هندسة النصوص القانونية صياغةً وترجمةً باللغتين العربية والإنجليزية معاً، وتتضمن خدماتنا:</p><ul><li><a href="#" onclick="showContent('bilingual-drafting'); return false;">تنظيم وصياغة العقود ثنائية اللغة (العربية والإنجليزية معاً)</a></li><li><a href="#" onclick="showContent('international-contracts'); return false;">مراجعة العقود والاتفاقيات التجارية الدولية وتكييفها</a></li><li><a href="#" onclick="showContent('media-legislations'); return false;">التشريعات الإعلامية وقوانين البث وحقوق الملكية الفكرية</a></li><li><a href="#" onclick="showContent('judicial-translation'); return false;">ترجمة الأحكام القضائية والمذكرات والمستندات الرسمية</a></li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-                    'bilingual-drafting': `<h2>تنظيم وصياغة العقود ثنائية اللغة (العربية والإنجليزية معاً)</h2><p>نقوم بتنظيم وصياغة العقود والاتفاقيات بنظام المتن الموازي (العربية والإنجليزية معاً جنباً إلى جنب في ذات الوثيقة)، مما يضمن التطابق التام والمطلق للمصطلحات والمفاهيم القانونية بين اللغتين، ويمنع أي التباس أو تعارض تفسيري قد ينشأ أمام المحاكم المحلية أو هيئات التحكيم الدولية،</p><a href="#" class="back-link" onclick="showContent('legal-translation'); return false;">&larr; العودة إلى قسم الصياغة والترجمة</a>`,
-                    'international-contracts': `<h2>مراجعة العقود والاتفاقيات التجارية الدولية وتكييفها</h2><p>دراسة ومراجعة عقود المساهمين، اتفاقيات الاندماج والاستحواذ، عقود الامتياز (Franchise)، والوكالات التجارية الأجنبية، مع تدقيقها لغوياً وقانونياً لضمان مواءمتها التامة مع القوانين اللبنانية والاتفاقيات الدولية والمعايير التجارية المعمول بها عالمياً،</p><a href="#" class="back-link" onclick="showContent('legal-translation'); return false;">&larr; العودة إلى قسم الصياغة والترجمة</a>`,
-                    'media-legislations': `<h2>التشريعات الإعلامية وقوانين البث وحقوق الملكية الفكرية</h2><p>تقديم استشارات قانونية متخصصة ومصاغة بعناية فائقة في شؤون الإنتاج الإعلامي، عقود التوزيع الفني، حقوق البث التلفزيوني والرقمي، وحماية الملكية الفكرية والعلامات التجارية للشركات والأفراد، مستندين في ذلك إلى إرث حافل وعميق في العمل مع الشبكات الإعلامية الدولية،</p><a href="#" class="back-link" onclick="showContent('legal-translation'); return false;">&larr; العودة إلى قسم الصياغة والترجمة</a>`,
-                    'judicial-translation': `<h2>ترجمة الأحكام القضائية والمذكرات والمستندات الرسمية</h2><p>ترجمة قانونية تخصصية ومعقمة للأحكام الصادرة عن المحاكم الأجنبية، مذكرات الدفاع، المستندات الثبوتية، والتقارير المالية، بنقل دقيق ورصين يحفظ القيمة القانونية والحجية الإثباتية للنص الأصلي أمام كافة المراجع القضائية والإدارية،</p><a href="#" class="back-link" onclick="showContent('legal-translation'); return false;">&larr; العودة إلى قسم الصياغة والترجمة</a>`,
-
-                    'company-formation': `<h2>قانون الأعمال وتأسيس الشركات وحوكمتها</h2><p>يوفر مكتبنا منظومة متكاملة من الخدمات القانونية الموجهة لرجال الأعمال، الشركات الناشئة، والمجموعات التجارية العائلية، بهدف حماية الاستثمارات وتأمين البيئة القانونية المثالية لنمو الأعمال، وتشمل خدماتنا بالتفصيل:</p><ul><li>اختيار وهيكلة الشكل القانوني للشركات (محدودة المسؤولية، مساهمة، تضامن)،</li><li>حوكمة الشركات، تنظيم محاضر مجالس الإدارة والجمعيات العمومية وصياغة الأنظمة الأساسية،</li><li>إعداد الرأي القانوني (Legal Opinion) للمستثمرين الأجانب والمغتربين اللبنانيين حول مشاريعهم الاستثمارية،</li><li>تخطيط الشركات العائلية وضمان انتقال الحصص والأسهم بين الأجيال بسلاسة قانونية وضريبية،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-                    
-                    'real-estate': `<h2>القانون العقاري ونزاعات الملكية</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلاً قضائياً راسخاً في جميع القضايا المتعلقة بالقانون العقاري، وتشمل خبراتنا الواسعة حماية الثروة العقارية وإدارة الأصول:</p><ul><li>الدعاوى العقارية ونزاعات الملكية، تثبيت الحقوق، ورفع التعديات،</li><li>قوانين الإيجارات السكنية وغير السكنية المعقدة (الأنظمة القديمة والجديدة وتعديلاتها)،</li><li>ملاحقة النزاعات الناشئة عن نكول عقود البيع العقارية وطلب التنفيذ التمهيدي،</li><li>إجراءات القسمة العقارية وتصفية الشيوع بين الشركاء أو الورثة (سواء كانت رضائية اتفاقية أو قضائية)،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-                    
-                    'inheritance': `<h2>حصر الإرث والتركات العائلية ونزاعاتها</h2><p>نواكب العائلات في تنظيم شؤون تركاتهم وتصفيتها لضمان انتقال الحقوق والمنتلكات بسلاسة وفقاً للقوانين المرعية، وتشمل الخدمات:</p><ul><li>المعاملات الإدارية والقضائية لاستصدار حصر الإرث، تصفية التركات، ونقل الملكيات،</li><li>إدارة وتسوية نزاعات الورثة بالطرق الودية وصياغة اتفاقات القسمة، أو عبر التقاضي عند تعذر الاتفاق،</li><li>التخطيط الاستباقي لحماية الأصول العائلية وصياغة الوصايا القانونية المتكاملة وضبط آثارها الضريبية،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-
-                    'labor-law': `<h2>قانون العمل ومنازعات الاستخدام</h2><p>نصون مصالح وحقوق أطراف الإنتاج (أصحاب العمل والأجراء) من خلال الاستشارات الدقيقة والتمثيل أمام مجالس العمل التحكيمية:</p><ul><li>صياغة عقود العمل الفردية والاتفاقيات الجماعية ولوائح العمل الداخلية للشركات،</li><li>التمثيل والتقاضي في دعاوى الصرف التعسفي، المطالبة ببدل الإنذار، والتعويضات المستحقة،</li><li>الاستشارات المتعلقة بالضمان الاجتماعي، حوادث العمل، وبراءات الذمة،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-
-                    'criminal-law': `<h2>قانون العقوبات والدفاع الجنائي</h2><p>نؤمن بأن حق الدفاع هو قدس أقدس القوانين، ويقدم مكتبنا تمثيلاً صارماً في القضايا الجزائية لحماية الحريات والضمانات القانونية:</p><ul><li>مواكبة وحضور التحقيقات الأولية أمام الضابطة العدلية والنيابات العامة وقضاة التحقيق،</li><li>إعداد دفوع ومذكرات الدفاع والترافع أمام محاكم الجنايات، الجنح، والمطبوعات،</li><li>تمثيل الضحايا والمدعين الشخصيين لتحصيل حقوقهم والتعويض عن الأضرار الناشئة عن الجرائم،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-
-                    'family-law': `<h2>قوانين الأحوال الشخصية والأسرة</h2><p>إدارة النزاعات الأسرية بخصوصية تامة وحساسية مطلقة تضمن كرامة الأفراد ومصلحة الأطفال الفضلى أمام مختلف المحاكم الروحية والدينية:</p><ul><li>دعاوى الطلاق، الهجر، وبطلان الزواج،</li><li>قضايا تحصيل المهر، النفقة الزوجية، ونفقة الأولاد،</li><li>نزاعات حضانة الأطفال، المشاهدة، والوصاية القانونية على القصر،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`,
-
-                    'insurance': `<h2>منازعات قضايا التأمين</h2><p>ملاحقة ومقاضاة شركات التأمين لضمان وفائها بالتزاماتها العقدية بالكامل دون مماطلة:</p><ul><li>دراسة وتحليل عقود التأمين لتحديد نطاق التغطية القانونية بدقة،</li><li>مطالبات التأمين الناشئة عن حوادث السير، الأضرار الجسدية، الممتلكات، والتأمين الصحي،</li><li>تمثيل العملاء في المفاوضات القضائية والودية مع لجان الرقابة على شركات التأمين والمحاكم المختصة،</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; العودة إلى الصفحة الرئيسية</a>`
+                    'legal-translation': `<h2>الصياغة والترجمة القانونية ثنائية اللغة والعقود الدولية</h2><p>بفضل الخبرة الطويلة الممتدة لأكثر من 35 عاماً في الصياغة القضائية والترجمة الاحترافية لشبكات الإعلام الدولية الكبرى (مثل MBC و OSN و Discovery)، يقدم مكتبنا حلولاً تخصصية فريدة ومتقدمة تتجاوز النقل اللغوي التقليدي لتشمل هندسة النصوص القانونية صياغةً وترجمةً باللغتين العربية والإنجليزية معاً، وتتضمن خدماتنا:</p><ul><li><a href="#" onclick="showContent('bilingual-drafting'); return false;">تنظيم وصياغة العقود ثنائية اللغة (العربية والإنجليزية معاً)</a></li><li><a href="#" onclick="showContent('international-contracts'); return false;">مراجعة العقود والاتفاقيات التجارية الدولية وتكييفها</a></li><li><a href="#" onclick="showContent('media-legislations'); return false;">التشريعات الإعلامية وقوانين البث وحقوق الملكية الفكرية</a></li><li><a href="#" onclick="showContent('judicial-translation'); return false;">ترجمة الأحكام القضائية والمذكرات والمستندات الرسمية</a></li></ul>`,
+                    'bilingual-drafting': `<h2>تنظيم وصياغة العقود ثنائية اللغة (العربية والإنجليزية معاً)</h2><p>نقوم بتنظيم وصياغة العقود والاتفاقيات بنظام المتن الموازي (العربية والإنجليزية معاً جنباً إلى جنب في ذات الوثيقة)، مما يضمن التطابق التام والمطلق للمصطلحات والمفاهيم القانونية بين اللغتين، ويمنع أي التباس أو تعارض تفسيري قد ينشأ أمام المحاكم المحلية أو هيئات التحكيم الدولية،</p>`,
+                    'international-contracts': `<h2>مراجعة العقود والاتفاقيات التجارية الدولية وتكييفها</h2><p>دراسة ومراجعة عقود المساهمين، اتفاقيات الاندماج والاستحواذ، عقود الامتياز (Franchise)، والوكالات التجارية الأجنبية، مع تدقيقها لغوياً وقانونياً لضمان مواءمتها التامة مع القوانين اللبنانية والاتفاقيات الدولية والمعايير التجارية المعمول بها عالمياً،</p>`,
+                    'media-legislations': `<h2>التشريعات الإعلامية وقوانين البث وحقوق الملكية الفكرية</h2><p>تقديم استشارات قانونية متخصصة ومصاغة بعناية فائقة في شؤون الإنتاج الإعلامي، عقود التوزيع الفني، حقوق البث التلفزيوني والرقمي، وحماية الملكية الفكرية والعلامات التجارية للشركات والأفراد، مستندين في ذلك إلى إرث حافل وعميق في العمل مع الشبكات الإعلامية الدولية،</p>`,
+                    'judicial-translation': `<h2>ترجمة الأحكام القضائية والمذكرات والمستندات الرسمية</h2><p>ترجمة قانونية تخصصية ومعقمة للأحكام الصادرة عن المحاكم الأجنبية، مذكرات الدفاع، المستندات الثبوتية، والتقارير المالية، بنقل دقيق ورصين يحفظ القيمة القانونية والحجية الإثباتية للنص الأصلي أمام كافة المراجع القضائية والإدارية،</p>`,
+                    'company-formation': `<h2>قانون الأعمال وتأسيس الشركات وحوكمتها</h2><p>يوفر مكتبنا منظومة متكاملة من الخدمات القانونية الموجهة لرجال الأعمال، الشركات الناشئة، والمجموعات التجارية العائلية، بهدف حماية الاستثمارات وتأمين البيئة القانونية المثالية لنمو الأعمال، وتشمل خدماتنا بالتفصيل:</p><ul><li>اختيار وهيكلة الشكل القانوني للشركات (محدودة المسؤولية، مساهمة، تضامن)،</li><li>حوكمة الشركات، تنظيم محاضر مجالس الإدارة والجمعيات العمومية وصياغة الأنظمة الأساسية،</li><li>إعداد الرأي القانوني (Legal Opinion) للمستثمرين الأجانب والمغتربين اللبنانيين حول مشاريعهم الاستثمارية،</li><li>تخطيط الشركات العائلية وضمان انتقال الحصص والأسهم بين الأجيال بسلاسة قانونية وضريبية،</li></ul>`,
+                    'real-estate': `<h2>القانون العقاري ونزاعات الملكية</h2><p>نحن نقدم استشارات قانونية متخصصة وتمثيلاً قضائياً راسخاً في جميع القضايا المتعلقة بالقانون العقاري، وتشمل خبراتنا الواسعة حماية الثروة العقارية وإدارة الأصول:</p><ul><li>الدعاوى العقارية ونزاعات الملكية، تثبيت الحقوق، ورفع التعديات،</li><li>قوانين الإيجارات السكنية وغير السكنية المعقدة (الأنظمة القديمة والجديدة وتعديلاتها)،</li><li>ملاحقة النزاعات الناشئة عن نكول عقود البيع العقارية وطلب التنفيذ التمهيدي،</li><li>إجراءات القسمة العقارية وتصفية الشيوع بين الشركاء أو الورثة (سواء كانت رضائية اتفاقية أو قضائية)،</li></ul>`,
+                    'inheritance': `<h2>حصر الإرث والتركات العائلية ونزاعاتها</h2><p>نواكب العائلات في تنظيم شؤون تركاتهم وتصفيتها لضمان انتقال الحقوق والمقتنيات بسلاسة وفقاً للقوانين المرعية، وتشمل الخدمات:</p><ul><li>المعاملات الإدارية والقضائية لاستصدار حصر الإرث، تصفية التركات، ونقل الملكيات،</li><li>إدارة وتسوية نزاعات الورثة بالطرق الودية وصياغة اتفاقات القسمة، أو عبر التقاضي عند تعذر الاتفاق،</li><li>التخطيط الاستباقي لحماية الأصول العائلية وصياغة الوصايا القانونية المتكاملة وضبط آثارها الضريبية،</li></ul>`,
+                    'labor-law': `<h2>قانون العمل ومنازعات الاستخدام</h2><p>نصون مصالح وحقوق أطراف الإنتاج (أصحاب العمل والأجراء) من خلال الاستشارات الدقيقة والتمثيل أمام مجالس العمل التحكيمية:</p><ul><li>صياغة عقود العمل الفردية والاتفاقيات الجماعية ولوائح العمل الداخلية للشركات،</li><li>التمثيل والتقاضي في دعاوى الصرف التعسفي، المطالبة ببدل الإنذار، والتعويضات المستحقة،</li><li>الاستشارات المتعلقة بالضمان الاجتماعي، حوادث العمل، وبراءات الذمة،</li></ul>`,
+                    'criminal-law': `<h2>قانون العقوبات والدفاع الجنائي</h2><p>نؤمن بأن حق الدفاع هو قدس أقدس القوانين، ويقدم مكتبنا تمثيلاً صارماً في القضايا الجزائية لحماية الحريات والضمانات القانونية:</p><ul><li>مواكبة وحضور التحقيقات الأولية أمام الضابطة العدلية والنيابات العامة وقضاة التحقيق،</li><li>إعداد دفوع ومذكرات الدفاع والترافع أمام محاكم الجنايات، الجنح، والمطبوعات،</li><li>تمثيل الضحايا والمدعين الشخصيين لتحصيل حقوقهم والتعويض عن الأضرار الناشئة عن الجرائم،</li></ul>`,
+                    'family-law': `<h2>قوانين الأحوال الشخصية والأسرة</h2><p>إدارة النزاعات الأسرية بخصوصية تامة وحساسية مطلقة تضمن كرامة الأفراد ومصلحة الأطفال الفضلى أمام مختلف المحاكم الروحية والدينية:</p><ul><li>دعاوى الطلاق، الهجر، وبطلان الزواج،</li><li>قضايا تحصيل المهر، النفقة الزوجية، ونفقة الأولاد،</li><li>نزاعات حضانة الأطفال، المشاهدة، والوصاية القانونية على القصر،</li></ul>`,
+                    'insurance': `<h2>منازعات قضايا التأمين</h2><p>ملاحقة ومقاضاة شركات التأمين لضمان وفائها بالتزاماتها العقدية بالكامل دون مماطلة:</p><ul><li>دراسة وتحليل عقود التأمين لتحديد نطاق التغطية القانونية بدقة،</li><li>مطالبات التأمين الناشئة عن حوادث السير، الأضرار الجسدية، الممتلكات، والتأمين الصحي،</li><li>تمثيل العملاء في المفاوضات القضائية والودية مع لجان الرقابة على شركات التأمين والمحاكم المختصة،</li></ul>`
                 }
             },
             en: {
@@ -363,15 +380,21 @@
                 linkedinLink: 'Connect with Us on LinkedIn',
                 footerText: '© 2026 Attorney George J. Bouhabib. All rights reserved.',
                 direction: 'ltr',
+                backToMain: '&larr; Back to Main Page',
+                backToSection: '&larr; Back to Translation Section',
                 content: {
-                    'legal-translation': `<h2>Bilingual Legal Drafting & International Contracts</h2><p>Leveraging over 35 years of elite jurisprudential and linguistic expertise with leading global media networks (such as MBC, OSN, and Discovery), our firm delivers high-tier legal engineering that bypasses conventional translation. We specialize in synthesizing text across the Anglo-American Common Law and Latin/Civil Law traditions:</p><ul><li>Dual-Language Drafting (structuring concurrent Arabic and English text within a single, side-by-side framework).</li><li>Reviewing and localizing international commercial cross-border agreements and joint ventures.</li><li>Specialized advisory on Media Regulations, broadcasting rights, and global Intellectual Property protocols.</li><li>High-fidelity translation of foreign judgments, corporate memorandums, and evidentiary documents.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'company-formation': `<h2>Corporate & Business Law</h2><p>We provide comprehensive corporate services tailored for entrepreneurs, international investors, and family-owned businesses to safeguard capital and optimize commercial operations:</p><ul><li>Corporate structuring and optimal entity selection (LLC, SAL, Partnerships).</li><li>Corporate Governance, drafting bylaws, and board resolutions.</li><li>International Commercial Contracts, franchise, and distribution agreements.</li><li>Cross-border legal consultations and formal Legal Opinions for foreign entities.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'real-estate': `<h2>Real Estate & Property Litigation</h2><p>Specialized representation and strategic advisory covering property rights, asset management, and complex real estate matters:</p><ul><li>Property disputes, ownership affirmation, and boundary litigation.</li><li>Complex rental laws, covering both historical and modern lease legislations.</li><li>Breach of real estate sales contracts and specific performance lawsuits.</li><li>Judicial and amicable property partitions (dissolution of co-ownership).</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'inheritance': `<h2>Successions & Family Estate Planning</h2><p>Navigating family wealth preservation, asset allocation, and probate management with absolute care and legal foresight:</p><ul><li>Probate procedures, securing inheritance verifications, and managing estate liquidations.</li><li>Amicable mediation and aggressive litigation of complex heir disputes.</li><li>Strategic estate planning, asset protection, and seamless intergenerational transfer of corporate shares.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'labor-law': `<h2>Labor & Employment Law</h2><p>Protecting the legal parameters of the employment relationship for corporate employers and executives:</p><ul><li>Drafting customized employment contracts and corporate internal regulations.</li><li>Litigation before the Labor Arbitral Councils regarding unfair dismissal and severance packages.</li><li>Advisory on Social Security compliance, workplace safety, and corporate discharge liabilities.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'criminal-defense': `<h2>Criminal Defense & Penal Cases</h2><p>Upholding constitutional and human rights through rigorous representation across all phases of criminal procedures:</p><ul><li>Legal counsel during preliminary police investigations, public prosecution sessions, and investigative judgeships.</li><li>Formulating defense briefs and oral advocacy before Felonies, Misdemeanors, and Press Courts.</li><li>Representing civil claimants to secure just financial compensation arising from penal offenses.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'family-law': `<h2>Family Law & Personal Status</h2><p>Managing domestic relations with complete discretion, prioritizing emotional stability and asset protection before religious and spiritual tribunals:</p><ul><li>Divorce, separation, and marital annulment litigation.</li><li>Alimony, dowry recovery, and child support enforcement.</li><li>Child custody disputes, visitation rights, and legal guardianships.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`,
-                    'insurance': `<h2>Insurance Claims & Disputes</h2><p>Holding insurance conglomerates accountable to their contractual duties through rigorous dispute management:</p><ul><li>In-depth policy parsing to delineate exact coverage perimeters.</li><li>Litigating rejected claims stemming from auto accidents, bodily injuries, and commercial losses.</li><li>Representing clients before Insurance Regulatory Committees and competent commercial courts.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Back to Main Page</a>`
+                    'legal-translation': `<h2>Bilingual Legal Drafting & International Contracts</h2><p>Leveraging over 35 years of elite jurisprudential and linguistic expertise with leading global media networks (such as MBC, OSN, and Discovery), our firm delivers high-tier legal engineering that bypasses conventional translation. We specialize in synthesizing text across the Anglo-American Common Law and Latin/Civil Law traditions:</p><ul><li><a href="#" onclick="showContent('bilingual-drafting'); return false;">Dual-Language Drafting (structuring concurrent Arabic and English text within a single framework)</a></li><li><a href="#" onclick="showContent('international-contracts'); return false;">Reviewing and localizing international commercial cross-border agreements</a></li><li><a href="#" onclick="showContent('media-legislations'); return false;">Specialized advisory on Media Regulations, broadcasting rights, and Intellectual Property</a></li><li><a href="#" onclick="showContent('judicial-translation'); return false;">High-fidelity translation of foreign judgments and corporate memorandums</a></li></ul>`,
+                    'bilingual-drafting': `<h2>Dual-Language Drafting (Arabic & English)</h2><p>We structure contracts using concurrent side-by-side text, guaranteeing absolute harmony between linguistic terms and preventing interpreting conflicts before national courts or international arbitral tribunals.</p>`,
+                    'international-contracts': `<h2>Reviewing & Localizing International Contracts</h2><p>Thorough examination of shareholder agreements, M&A operations, franchises, and foreign agencies, tailored to ensure complete compliance with Lebanese public policy and international commercial standards.</p>`,
+                    'media-legislations': `<h2>Media Regulations & Intellectual Property</h2><p>Providing custom legal solutions regarding media production, art distribution contracts, and digital broadcasting rights, drawing upon an extensive legacy of working with global networks.</p>`,
+                    'judicial-translation': `<h2>Translation of Judgments & Evidentiary Documents</h2><p>High-fidelity translation of foreign judgments, defense sheets, and complex financial reports, retaining the rigorous evidentiary power of the original text before all judicial authorities.</p>`,
+                    'company-formation': `<h2>Corporate & Business Law</h2><p>We provide comprehensive corporate services tailored for entrepreneurs, international investors, and family-owned businesses to safeguard capital and optimize commercial operations:</p><ul><li>Corporate structuring and optimal entity selection (LLC, SAL, Partnerships).</li><li>Corporate Governance, drafting bylaws, and board resolutions.</li><li>International Commercial Contracts, franchise, and distribution agreements.</li><li>Cross-border legal consultations and formal Legal Opinions for foreign entities.</li></ul>`,
+                    'real-estate': `<h2>Real Estate & Property Litigation</h2><p>Specialized representation and strategic advisory covering property rights, asset management, and complex real estate matters:</p><ul><li>Property disputes, ownership affirmation, and boundary litigation.</li><li>Complex rental laws, covering both historical and modern lease legislations.</li><li>Breach of real estate sales contracts and specific performance lawsuits.</li><li>Judicial and amicable property partitions (dissolution of co-ownership).</li></ul>`,
+                    'inheritance': `<h2>Successions & Family Estate Planning</h2><p>Navigating family wealth preservation, asset allocation, and probate management with absolute care and legal foresight:</p><ul><li>Probate procedures, securing inheritance verifications, and managing estate liquidations.</li><li>Amicable mediation and aggressive litigation of complex heir disputes.</li><li>Strategic estate planning, asset protection, and seamless intergenerational transfer of corporate shares.</li></ul>`,
+                    'labor-law': `<h2>Labor & Employment Law</h2><p>Protecting the legal parameters of the employment relationship for corporate employers and executives:</p><ul><li>Drafting customized employment contracts and corporate internal regulations.</li><li>Litigation before the Labor Arbitral Councils regarding unfair dismissal and severance packages.</li><li>Advisory on Social Security compliance, workplace safety, and corporate discharge liabilities.</li></ul>`,
+                    'criminal-law': `<h2>Criminal Defense & Penal Cases</h2><p>Upholding constitutional and human rights through rigorous representation across all phases of criminal procedures:</p><ul><li>Legal counsel during preliminary police investigations, public prosecution sessions, and investigative judgeships.</li><li>Formulating defense briefs and oral advocacy before Felonies, Misdemeanors, and Press Courts.</li><li>Representing civil claimants to secure just financial compensation arising from penal offenses.</li></ul>`,
+                    'family-law': `<h2>Family Law & Personal Status</h2><p>Managing domestic relations with complete discretion, prioritizing emotional stability and asset protection before religious and spiritual tribunals:</p><ul><li>Divorce, separation, and marital annulment litigation.</li><li>Alimony, dowry recovery, and child support enforcement.</li><li>Child custody disputes, visitation rights, and legal guardianships.</li></ul>`,
+                    'insurance': `<h2>Insurance Claims & Disputes</h2><p>Holding insurance conglomerates accountable to their contractual duties through rigorous dispute management:</p><ul><li>In-depth policy parsing to delineate exact coverage perimeters.</li><li>Litigating rejected claims stemming from auto accidents, bodily injuries, and commercial losses.</li><li>Representing clients before Insurance Regulatory Committees and competent commercial courts.</li></ul>`
                 }
             },
             fr: {
@@ -400,10 +423,21 @@
                 linkedinLink: 'Rejoignez-nous sur LinkedIn',
                 footerText: '© 2026 Avocat George J. Bouhabib. Tous droits réservés.',
                 direction: 'ltr',
+                backToMain: '&larr; Retour à l\'accueil',
+                backToSection: '&larr; Retour à la section Traduction',
                 content: {
-                    'legal-translation': `<h2>Rédaction Bilingue & Contrats Internationaux</h2><p>Fort d'une expertise de plus de 35 ans auprès de grands réseaux de médias internationaux, notre cabinet offre une ingénierie juridique bilingue avancée :</p><ul><li>Rédaction de contrats bilingues juxtaposés (Arabe et Anglais simultanément sur le même document).</li><li>Analyse, mise en conformité et révision de traités commerciaux internationaux et joint-ventures.</li><li>Conseil spécialisé en droit des médias, propriété intellectuelle et législations sur la radiodiffusion.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Retour à l'accueil</a>`,
-                    'company-formation': `<h2>Droit des Affaires & Sociétés</h2><p>Nous offrons des services intégrés pour structurer, auditer et pérenniser vos activités commerciales au Liban et à l'étranger :</p><ul><li>Choix de la forme juridique et constitution de sociétés (SARL, SAL, Sociétés de personnes).</li><li>Gouvernance d'entreprise, rédaction des statuts et procès-verbaux.</li><li>Contrats commerciaux internationaux, accords de distribution et franchises.</li><li>Consultations transfrontalières et avis juridiques (Legal Opinions) pour entités étrangères.</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Retour à l'accueil</a>`,
-                    'real-estate': `<h2>Droit Immobilier & Litiges fonciers</h2><p>Protection du patrimoine immobilier et gestion des contentieux complexes :</p><ul><li>Litiges fonciers, confirmation de propriété et contestations de limites.</li><li>Droit des baux commerciaux et d'habitation (anciens et nouveaux systèmes).</li><li>Contentieux liés aux compromis de vente et inexécutions contractuelles.</li><li>Partage immobilier judiciaire et amiable (liquidation d'indivision).</li></ul><a href="#" class="back-link" onclick="showMainSections(); return false;">&larr; Retour à l'accueil</a>`
+                    'legal-translation': `<h2>Rédaction Bilingue & Contrats Internationaux</h2><p>Fort d'une expertise de plus de 35 ans auprès de grands réseaux de médias internationaux (tels que MBC, OSN, et Discovery), notre cabinet offre une ingénierie juridique bilingue avancée :</p><ul><li><a href="#" onclick="showContent('bilingual-drafting'); return false;">Rédaction de contrats bilingues juxtaposés (Arabe/Anglais)</a></li><li><a href="#" onclick="showContent('international-contracts'); return false;">Analyse et révision de traités commerciaux internationaux</a></li><li><a href="#" onclick="showContent('media-legislations'); return false;">Conseil en droit des médias et propriété intellectuelle</a></li><li><a href="#" onclick="showContent('judicial-translation'); return false;">Traduction certifiée d'arrêts judiciaires et actes officiels</a></li></ul>`,
+                    'bilingual-drafting': `<h2>Contrats Bilingues Juxtaposés</h2><p>Structure rigoureuse préservant la stricte équivalence conceptuelle entre l'arabe et l'anglais au sein du même acte, éliminant ainsi tout risque de divergence interprétative.</p>`,
+                    'international-contracts': `<h2>Traités Commerciaux Internationaux</h2><p>Mise en conformité des pactes d'actionnaires, contrats de franchise et statuts d'agences étrangères avec l'ordre public libanais et les conventions transnationales.</p>`,
+                    'media-legislations': `<h2>Droit des Médias & Propriété Intellectuelle</h2><p>Assistance pointue pour l'audiovisuel, la distribution artistique et le droit d'auteur numérique, forte d'une longue pratique avec les chaînes satellitaires.</p>`,
+                    'judicial-translation': `<h2>Traduction d'Actes Judiciaires & Officiels</h2><p>Translating de jugements étrangers et conclusions de défense avec exactitude pour maintenir leur pleine force probante devant les juridictions compétentes.</p>`,
+                    'company-formation': `<h2>Droit des Affaires & Sociétés</h2><p>Nous offrons des services intégrés pour structurer, auditer et pérenniser vos activités commerciales au Liban et à l'étranger :</p><ul><li>Choix de la forme juridique et constitution de sociétés (SARL, SAL, Sociétés de personnes).</li><li>Gouvernance d'entreprise, rédaction des statuts et procès-verbaux.</li><li>Contrats commerciaux internationaux, accords de distribution et franchises.</li><li>Consultations transfrontalières et avis juridiques (Legal Opinions) pour entités étrangères.</li></ul>`,
+                    'real-estate': `<h2>Droit Immobilier & Litiges fonciers</h2><p>Protection du patrimoine immobilier et gestion des contentieux complexes :</p><ul><li>Litiges fonciers, confirmation de propriété et contestations de limites.</li><li>Droit des baux commerciaux et d'habitation (anciens et nouveaux systèmes).</li><li>Contentieux liés aux compromis de vente et inexécutions contractuelles.</li><li>Partage immobilier judiciaire et amiable (liquidation d'indivision).</li></ul>`,
+                    'inheritance': `<h2>Successions & Planification Familiale</h2><p>Gestion des transmissions de patrimoine et liquidation des successions avec sérénité et sécurité juridique :</p><ul><li>Procédures de dévolution successorale et transfert de propriété immobilière.</li><li>Médiation amiable et gestion des litiges judiciaires entre héritiers.</li><li>Planification successorale et transmission de parts sociales.</li></ul>`,
+                    'labor-law': `<h2>Droit du Travail & Contentieux</h2><p>Défense des intérêts des employeurs et des cadres supérieurs :</p><ul><li>Rédaction de contrats de travail et de règlements intérieurs.</li><li>Contentieux devant les conseils d'arbitrage du travail (licenciement abusif, indemnités).</li><li>Conformité à la Sécurité Sociale et accidents du travail.</li></ul>`,
+                    'criminal-law': `<h2>Droit Pénal & Défense</h2><p>Préservation rigoureuse de la liberté individuelle à tous les stades de la procédure pénale :</p><ul><li>Assistance lors des enquêtes préliminaires et devant les juges d'instruction.</li><li>Rédaction de mémoires en défense devant les cours criminelles et de presse.</li><li>Représentation des parties civiles pour l'obtention des réparations financières.</li></ul>`,
+                    'family-law': `<h2>Droit de la Famille & Statut Personnel</h2><p>Gestion des litiges familiaux avec discrétion devant les tribunaux religieux et spirituels :</p><ul><li>Procédures de divorce, séparation et annulation de mariage.</li><li>Pensions alimentaires, garde d'enfants et exécution des obligations.</li><li>Tutelle et protection juridique des mineurs.</li></ul>`,
+                    'insurance': `<h2>Droit des Assurances & Recouvrement</h2><p>Gestion des litiges contre les compagnies d'assurances pour le respect des garanties :</p><ul><li>Analyse des polices d'assurance et délimitation des couvertures.</li><li>Recouvrement d'indemnités (accidents de la route, préjudices corporels).</li><li>Représentation devant les commissions de contrôle et les tribunaux de commerce.</li></ul>`
                 }
             }
         };
@@ -412,60 +446,81 @@
 
         function updateContent() {
             const langData = translations[currentLang];
+            
+            // Set Page Title and HTML Direction
             document.title = langData.title;
+            document.documentElement.dir = langData.direction;
+            document.documentElement.lang = currentLang;
+
+            // Header & Hero
             document.getElementById('site-title').textContent = langData.siteTitle;
             document.getElementById('hero-title').textContent = langData.heroTitle;
             document.getElementById('hero-subtitle').textContent = langData.heroSubtitle;
+
+            // Philosophy
             document.getElementById('philosophy-title').textContent = langData.philosophyTitle;
             document.getElementById('philosophy-text').textContent = langData.philosophyText;
+
+            // Specializations Grid Header
             document.getElementById('specializations-title').textContent = langData.specializationsTitle;
-            document.getElementById('contact-title').textContent = langData.contactTitle;
-            document.getElementById('contact-address').textContent = langData.contactAddress;
-            document.getElementById('contact-phone').innerHTML = langData.contactPhone;
-            document.getElementById('contact-email').textContent = langData.contactEmail;
-            
-            const whatsapp = document.getElementById('whatsapp-link');
-            whatsapp.textContent = langData.whatsappLink;
-            whatsapp.href = `https://wa.me/96171856207`;
 
-            const linkedin = document.getElementById('linkedin-link');
-            linkedin.textContent = langData.linkedinLink;
-
-            document.getElementById('footer-text').textContent = langData.footerText;
-
-            document.body.dir = langData.direction;
-            
-            // Text align setup based on language direction
-            const isRTL = langData.direction === 'rtl';
-            document.getElementById('home-section').style.textAlign = isRTL ? 'right' : 'left';
-            document.getElementById('philosophy-section').style.textAlign = isRTL ? 'right' : 'left';
-            
-            const phBox = document.getElementById('philosophy-text');
-            if (isRTL) {
-                phBox.style.borderRight = "4px solid var(--accent-color)";
-                phBox.style.borderLeft = "none";
-            } else {
-                phBox.style.borderLeft = "4px solid var(--accent-color)";
-                phBox.style.borderRight = "none";
-            }
-
-            const specList = document.getElementById('specializations-list');
-            specList.innerHTML = '';
+            // Build Specializations Grid Dynamically
+            const gridContainer = document.getElementById('specializations-list');
+            gridContainer.innerHTML = '';
             langData.specializations.forEach(spec => {
                 const item = document.createElement('div');
                 item.className = 'specialization-item';
                 item.innerHTML = `<a href="#" onclick="showContent('${spec.id}'); return false;">${spec.name}</a>`;
-                specList.appendChild(item);
+                gridContainer.appendChild(item);
             });
 
+            // Contact Section
+            document.getElementById('contact-title').textContent = langData.contactTitle;
+            document.getElementById('contact-address').textContent = langData.contactAddress;
+            document.getElementById('contact-phone').innerHTML = langData.contactPhone;
+            document.getElementById('contact-email').textContent = langData.contactEmail;
+            document.getElementById('whatsapp-link').textContent = langData.whatsappLink;
+            document.getElementById('linkedin-link').textContent = langData.linkedinLink;
+
+            // Footer
+            document.getElementById('footer-text').textContent = langData.footerText;
+
+            // Update active link styling
+            document.querySelectorAll('.lang-switcher a').forEach(a => a.classList.remove('active'));
+            document.getElementById(`lang-${currentLang}`).classList.add('active');
+
+            // Hide dynamic section and show main ones when shifting languages
             showMainSections();
         }
 
         function switchLanguage(lang) {
             currentLang = lang;
-            document.querySelectorAll('.lang-switcher a').forEach(a => a.classList.remove('active'));
-            event.target.classList.add('active');
             updateContent();
+        }
+
+        function showContent(id) {
+            const langData = translations[currentLang];
+            const container = document.getElementById('content-container');
+            
+            // Build the back link depending on context
+            let backLinkHTML = '';
+            if (['bilingual-drafting', 'international-contracts', 'media-legislations', 'judicial-translation'].includes(id)) {
+                backLinkHTML = `<a href="#" class="back-link" onclick="showContent('legal-translation'); return false;">${langData.backToSection}</a>`;
+            } else {
+                backLinkHTML = `<a href="#" class="back-link" onclick="showMainSections(); return false;">${langData.backToMain}</a>`;
+            }
+
+            container.innerHTML = langData.content[id] + backLinkHTML;
+
+            // Hide main blocks, reveal dynamic container
+            document.getElementById('home-section').style.display = 'none';
+            document.getElementById('philosophy-section').style.display = 'none';
+            document.getElementById('specializations-section').style.display = 'none';
+            document.getElementById('contact-section').style.display = 'none';
+            
+            const dynamicSec = document.getElementById('dynamic-content');
+            dynamicSec.classList.remove('section-hidden');
+            window.scrollTo(0, 0);
         }
 
         function showMainSections() {
@@ -473,39 +528,14 @@
             document.getElementById('philosophy-section').style.display = 'block';
             document.getElementById('specializations-section').style.display = 'block';
             document.getElementById('contact-section').style.display = 'block';
-            document.getElementById('dynamic-content').style.display = 'none';
-            window.scrollTo(0, 0);
-        }
-
-        function showContent(contentId) {
-            const container = document.getElementById('content-container');
-            const langData = translations[currentLang];
             
-            // Check if content exists for the current language, default to AR if sub-content isn't translated yet
-            let htmlContent = langData.content[contentId];
-            if (!htmlContent && translations['ar'].content[contentId]) {
-                htmlContent = translations['ar'].content[contentId];
-            }
-
-            if (htmlContent) {
-                container.innerHTML = htmlContent;
-                document.getElementById('home-section').style.display = 'none';
-                document.getElementById('philosophy-section').style.display = 'none';
-                document.getElementById('specializations-section').style.display = 'none';
-                document.getElementById('contact-section').style.display = 'none';
-                
-                const dynSection = document.getElementById('dynamic-content');
-                dynSection.style.display = 'block';
-                dynSection.style.textAlign = currentLang === 'ar' ? 'right' : 'left';
-                
-                window.scrollTo(0, 0);
-            } else {
-                showMainSections();
-            }
+            document.getElementById('dynamic-content').classList.add('section-hidden');
         }
 
-        // Initialize Web Page Content
-        updateContent();
+        // Initialize on DOM Load
+        document.addEventListener('DOMContentLoaded', () => {
+            updateContent();
+        });
     </script>
 </body>
 </html>
